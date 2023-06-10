@@ -90,8 +90,14 @@ class World:
                     file.write(self.map[i][j])
                 file.write("\n")
 
+    def load_locations(self):
+        pass
 
+    def load_items(self):
+        pass
 
+    def load_npcs(self):
+        pass
 
 if __name__ == "__main__":
     new_map = World(5, 5)

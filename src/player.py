@@ -28,8 +28,5 @@ class Player:
 
     # called if player triggers a lose_hp tile
 
-    def pick_up_item(self):
-        pass
-
     def lose_hp(self):
         pass
