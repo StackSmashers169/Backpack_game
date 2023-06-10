@@ -1,0 +1,74 @@
+{
+  "database_maintenance_crew": {
+    "name": "Database Maintenance Crew",
+    "dialogue": {
+      "dialogue1": "What how did you get in here?",
+      "dialogue2": "Oh your that white hat hacker we hired? Make sure you do these security patches pronto!"
+    },
+    "action": "none"
+  },
+
+  "the_middle_man": {
+    "name": "The_middle_man",
+    "dialogue": {
+
+    },
+    "action": "none"
+  },
+  "random_script_kiddie": {
+    "name": "Random Script Kiddie",
+    "dialogue":{
+
+    },
+    "action": "none"
+  },
+
+  "Server Security": {
+    "name": "Server Security",
+    "dialogue": {
+
+    },
+    "action": "cause you to lose 50 data"
+  },
+
+  "The_forum_crowd": {
+    "name": "The_forum_crowd",
+    "dialogue":{
+
+    }
+
+  },
+  "frustrated_hacker": {
+    "name": "Frustrated Hacker",
+    "dialogue": {
+
+    },
+    "action": "gives you 10 data"
+  },
+
+  "API Salesperson":{
+    "name": "API Salesperson"
+  },
+
+  "Bitcoin Miner Adam": {
+    "name": "Bitcoin Miner Adam",
+    "dialogue": {
+
+    }
+  },
+
+  "Bitcoin Miner Brody": {
+    "name": "Bitcoin Miner Brody":
+    "dialogue": {
+
+    }
+  },
+
+  "Jones": {
+    "name": "Jones",
+    "dialogue": {
+
+    }
+  }
+
+}

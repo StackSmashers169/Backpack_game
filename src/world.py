@@ -1,6 +1,9 @@
 # Code by Victor J Wilson
 # from src.location import Location
 from src.player import Player
+import os
+
+
 # the first thing to be built, you can't have a game without a world to put it in
 class World:
     """ Class "World"
@@ -13,11 +16,12 @@ class World:
         self.width = width
         self.height = height
         self.map = [['◇' for j in range(width)] for i in range(height)]
-        self.position = [-1, -1]
+        self.position = [-1, -1]  # default position when player is not on the map
 
     # places player icon onto the map
     def place_player(self, y_coordinate, x_coordinate):
         self.map[y_coordinate][x_coordinate] = '🞯'
+        self.print_map()
         print("player entered world successfully \n")
 
     # marks location as visited
@@ -38,12 +42,13 @@ class World:
         return self.position
 
     # the player uses this to change worlds
-    def move_to_new_location(self, x_coordinate, y_coordinate, player_position):
+    def move_to_new_location(self, player_position):
         # change the player's current location index.
+        x_coordinate = player_position[0]
+        y_coordinate = player_position[1]
         print("enter a direction: ")
         if player_position == [-1, -1]:
             print("there is not a player on the map")
-
         else:
             self.mark_as_visited()
             direction = input()
@@ -75,18 +80,22 @@ class World:
                         y_coordinate = y_coordinate - 1
                         self.map[x_coordinate][y_coordinate] = '🞯'
 
-        self.print_map()
+        self.write_map_to_text_file()
 
-    def print_map(self):
-        for i in range(self.height):
-            for j in range(self.width):
-                print(self.map[i][j], end="    ")
-            print("\n")
+    def write_map_to_text_file(self):
+        file = open("game_data/map.txt")
+        if os.path.getsize("/game_data/map.txt") == 0:
+            for i in range(self.height):
+                for j in range(self.width):
+                    file.write(self.map[i][j])
+                file.write("\n")
+
+
 
 
 if __name__ == "__main__":
     new_map = World(5, 5)
-    new_map.print_map()
-
     new_map.place_player(1, 2)
-    new_map.print_map()
+    new_map.move_to_new_location(new_map.check_location())
+
+

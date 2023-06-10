@@ -1,0 +1,191 @@
+{
+  "empty_roomA": {
+    "name": "Empty_Room_Type_A",
+    "description": "Entered abandoned area",
+    "visited_status": false,
+    "has_trap": false,
+    "np_characters": {
+    },
+    "items":{
+    },
+    "positions": {
+
+    }
+  },
+
+  "empty_roomB": {
+    "name": "Empty_Room_Type_B",
+    "description": "Nothing to see here",
+    "visited_status": false,
+    "has_trap": false,
+    "np_characters":{
+
+    },
+    "items":{
+
+    },
+    "positions":{
+
+    }
+  },
+
+  "empty_roomC": {
+    "name": "Empty_Room_Type_C",
+    "description": "Empty space detected",
+    "visited_status": false,
+    "has_trap": false,
+    "np_characters": {
+
+    },
+    "items": {
+
+    },
+    "positions":{
+
+    }
+
+
+  },
+
+  "Trap_Type_A": {
+    "name": "Data_Fragmentation_Trap",
+    "description": "Data Fragmentation Trap, 10b of data lost",
+    "visited_status": false,
+    "has_trap": true,
+    "np_characters": {
+
+    },
+    "items": {
+
+    },
+    "positions": {
+
+    }
+
+  },
+
+  "Trap_Type_B": {
+    "name": "Corrupt_Data_Packet",
+    "description": "A corrupt packet enters your program destroying 10b of data",
+    "visited_satus": false,
+    "has_trap": true,
+    "np_characters": {
+
+    },
+    "items": {
+
+    },
+    "positions": {
+
+    }
+  },
+
+  "Database_Room": {
+    "name": "Database_Room",
+    "description": "A room full of bytes of data",
+    "visited_status": false,
+    "has_trap": false,
+    "np_characters": {
+
+    },
+    "items": {
+
+    },
+    "positions": {
+
+    }
+  },
+
+  "Connection_Hub": {
+    "name": "Connection Hub",
+    "description": "A room full of connections",
+    "visited_status": false,
+    "has_trap": false,
+    "np_characters": {
+
+    },
+    "items": {
+
+    },
+    "positions": {
+
+    }
+  },
+
+  "internet_forum": {
+    "name": "Internet Forum",
+    "description": "A room full of angry people shouting at each other",
+    "visited_status": false,
+    "has_trap": false,
+    "np_characters": {
+
+    },
+    "items": {
+
+    },
+    "positions": {
+
+    }
+  },
+  "the_server_room": {
+    "name": "The Server Room",
+    "description": "A room with plenty of useful information that you probably don't have permission to see",
+    "visited_status": false,
+    "has_trap": false,
+    "np_characters": {
+
+    },
+    "items": {
+
+    },
+    "positions": {
+
+    },
+    "The API Center": {
+      "name": "The Api Center",
+      "description":"A shady API selling business' HQ",
+      "visited_status": false,
+      "has_trap": false,
+      "np_characters":{
+
+      },
+      "items": {
+
+      },
+      "positions": {
+
+      }
+    },
+    "BCOM Bitcoin Mine": {
+      "name": "BCOM bitcoin mine",
+      "description":"A big mining operation in sector D of webworld",
+      "visited_status": false,
+      "has_trap": false,
+      "np_characters": {
+
+      },
+      "items": {
+
+      },
+      "positions": {
+
+      }
+    },
+    "My Remote Server": {
+      "name": "My Remote Server":
+      "description": "Made it back safely, those bozos can't catch me now",
+      "visited-status": false,
+      "has_trap": false,
+      "np_characters": {
+
+      },
+      "items": {
+
+      },
+      "positions":{
+
+      }
+  }
+
+
+}

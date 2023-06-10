@@ -16,15 +16,13 @@ class BackPack:
 
     """
 
-    def __init__(self, items: Sequence):
+    def __init__(self, items: list):
         self._backpack = []
         if items is None:
             items = []
         for item in items:
             self._backpack.append(item)
         self.sort()
-
-
 
     def sort(self):
         self._backpack.sort()
