@@ -10,7 +10,7 @@
   "name": "Byte Package",
   "item_effect": "restores 20 bytes of data",
   "data_gain": 20,
-  "can_diable": false
+  "can_disable": false
 },
 
  "anti_virus_module": {
@@ -32,6 +32,6 @@
     "item_effect": "wireshark packet scanner provides information on all four reachable tiles",
     "data_gain": 0,
     "can_disable": false
-  },
+  }
 
 }

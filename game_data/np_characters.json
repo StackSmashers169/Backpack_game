@@ -1,74 +1,81 @@
 {
   "database_maintenance_crew": {
-    "name": "Database Maintenance Crew",
-    "dialogue": {
-      "dialogue1": "What how did you get in here?",
-      "dialogue2": "Oh your that white hat hacker we hired? Make sure you do these security patches pronto!"
-    },
-    "action": "none"
+    "name": "Database maintenance crew",
+    "dialogues": [
+      "What how did you get in here?",
+      "Oh your that white hat hacker we hired? Make sure you do these security patches pronto!"
+    ],
+    "action": " "
   },
 
   "the_middle_man": {
-    "name": "The_middle_man",
-    "dialogue": {
+    "name": "The middle man",
+    "dialogues": [
 
-    },
+    ],
     "action": "none"
   },
   "random_script_kiddie": {
-    "name": "Random Script Kiddie",
-    "dialogue":{
+    "name": "Random script kiddie",
+    "dialogues":[
 
-    },
+    ],
     "action": "none"
   },
 
   "Server Security": {
-    "name": "Server Security",
-    "dialogue": {
+    "name": "Server security",
+    "dialogues": [
 
-    },
+    ],
     "action": "cause you to lose 50 data"
   },
 
   "The_forum_crowd": {
-    "name": "The_forum_crowd",
-    "dialogue":{
+    "name": "The forum crowd",
+    "dialogues":[
 
-    }
-
+    ],
+    "action": " "
   },
   "frustrated_hacker": {
-    "name": "Frustrated Hacker",
-    "dialogue": {
+    "name": "Frustrated hacker",
+    "dialogues": [
 
-    },
+    ],
     "action": "gives you 10 data"
   },
 
   "API Salesperson":{
-    "name": "API Salesperson"
+    "name": "API salesperson",
+    "dialogues": [
+
+    ],
+    "action": "gives you the wireshark"
   },
 
   "Bitcoin Miner Adam": {
     "name": "Bitcoin Miner Adam",
-    "dialogue": {
+    "dialogues": [
 
-    }
+    ],
+    "action": "gives you the bit bucket"
   },
 
   "Bitcoin Miner Brody": {
-    "name": "Bitcoin Miner Brody":
-    "dialogue": {
+    "name": "Bitcoin Miner Brody",
+    "dialogues": [
 
-    }
+    ],
+    "action": "gives you byte package"
   },
 
   "Jones": {
     "name": "Jones",
-    "dialogue": {
+    "dialogues": [
 
-    }
+    ],
+    "action": " "
   }
 
 }

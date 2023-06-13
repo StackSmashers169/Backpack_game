@@ -1,6 +1,5 @@
 # code by Victor J Wilson(20094873)
 
-from typing import Sequence
 
 from backpack import BackPack
 
@@ -13,6 +12,11 @@ class Player:
         self.data = 50  # data represents HP for this character or more precisely 50b.
         self.items = []
         self.backpack = BackPack(self.items)
+        self.position = []
+
+    # saves the player's position on the map
+    def save_position(self, x_coordinate, y_coordinate):
+        pass
 
     # searches location for an item
     def search_location(self):
@@ -30,3 +34,4 @@ class Player:
 
     def lose_hp(self):
         pass
+

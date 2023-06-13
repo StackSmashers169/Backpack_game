@@ -1,50 +1,48 @@
 {
   "empty_roomA": {
-    "name": "Empty_Room_Type_A",
+    "name": "Empty Location Type A",
     "description": "Entered abandoned area",
     "visited_status": false,
     "has_trap": false,
-    "np_characters": {
-    },
-    "items":{
-    },
-    "positions": {
+    "np_characters": [
+    ],
+    "items":[
+    ],
+    "positions": [
 
-    }
+    ]
   },
 
   "empty_roomB": {
-    "name": "Empty_Room_Type_B",
+    "name": "Empty Location Type B",
     "description": "Nothing to see here",
     "visited_status": false,
     "has_trap": false,
-    "np_characters":{
+    "np_characters":[
 
-    },
-    "items":{
+    ],
+    "items":[
 
-    },
-    "positions":{
+    ],
+    "positions":[
 
-    }
+    ]
   },
 
   "empty_roomC": {
-    "name": "Empty_Room_Type_C",
+    "name": "Empty Location Type C",
     "description": "Empty space detected",
     "visited_status": false,
     "has_trap": false,
-    "np_characters": {
+    "np_characters": [
 
-    },
-    "items": {
+    ],
+    "items": [
 
-    },
-    "positions":{
+    ],
+    "positions":[
 
-    }
-
-
+    ]
   },
 
   "Trap_Type_A": {
@@ -52,15 +50,15 @@
     "description": "Data Fragmentation Trap, 10b of data lost",
     "visited_status": false,
     "has_trap": true,
-    "np_characters": {
+    "np_characters": [
 
-    },
-    "items": {
+    ],
+    "items": [
 
-    },
-    "positions": {
+    ],
+    "positions": [
 
-    }
+    ]
 
   },
 
@@ -72,12 +70,12 @@
     "np_characters": {
 
     },
-    "items": {
+    "items": [
 
-    },
-    "positions": {
+    ],
+    "positions": [
 
-    }
+    ]
   },
 
   "Database_Room": {
@@ -88,12 +86,12 @@
     "np_characters": {
 
     },
-    "items": {
+    "items": [
 
-    },
-    "positions": {
+    ],
+    "positions": [
 
-    }
+    ]
   },
 
   "Connection_Hub": {
@@ -104,12 +102,12 @@
     "np_characters": {
 
     },
-    "items": {
+    "items": [
 
-    },
-    "positions": {
+    ],
+    "positions": [
 
-    }
+    ]
   },
 
   "internet_forum": {
@@ -120,9 +118,9 @@
     "np_characters": {
 
     },
-    "items": {
+    "items": [
 
-    },
+    ],
     "positions": {
 
     }
@@ -135,56 +133,60 @@
     "np_characters": {
 
     },
-    "items": {
+    "items": [
 
-    },
-    "positions": {
+    ],
+    "positions": [
 
-    },
+    ],
     "The API Center": {
       "name": "The Api Center",
       "description":"A shady API selling business' HQ",
       "visited_status": false,
       "has_trap": false,
-      "np_characters":{
+      "np_characters":[
 
-      },
-      "items": {
+      ],
 
-      },
-      "positions": {
 
-      }
+      "items":[
+
+      ],
+
+
+      "positions": [
+
+      ]
     },
     "BCOM Bitcoin Mine": {
       "name": "BCOM bitcoin mine",
       "description":"A big mining operation in sector D of webworld",
       "visited_status": false,
       "has_trap": false,
-      "np_characters": {
+      "np_characters":[
 
-      },
-      "items": {
+      ],
+      "items": [
 
-      },
-      "positions": {
+      ],
+      "positions": [
 
-      }
+      ]
     },
     "My Remote Server": {
       "name": "My Remote Server":
       "description": "Made it back safely, those bozos can't catch me now",
       "visited-status": false,
       "has_trap": false,
-      "np_characters": {
+      "np_characters":[
 
-      },
-      "items": {
+      ],
+      "items": [
 
-      },
-      "positions":{
+      ],
+      "positions":[
 
-      }
+      ]
   }
 
 
