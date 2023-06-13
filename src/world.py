@@ -1,10 +1,6 @@
 # Code by Victor J Wilson
-
-from location import Location
-from npc import NPC
-from item import Item
+import os
 import random
-import json
 
 
 # the first thing to be built, you can't have a game without a world to put it in
@@ -27,7 +23,7 @@ class World:
 
     # writes the map to the text file
     def write_map_to_text_file(self):
-        with open("../game_data/world.txt", 'w', encoding="utf-8") as file:
+        with open("../game_data/world.txt", 'w') as file:
             for i in range(self.height):
                 for j in range(self.width):
                     file.write(self.map[i][j])
@@ -35,137 +31,89 @@ class World:
 
     # places player in a random position on the using random access
     def place_player(self):
-        random_position = random.randint(0, 24)
+        y_coordinate = random.randint(0, 4)
+        x_coordinate = random.randint(0, 4)
         with open("../game_data/world.txt", 'r+', encoding="utf-8") as file:
-            file.seek(random_position)
-            print(random_position)
+            width = len(file.readline()) + 1  # for some reason width won't catch the \r character
+            # for posix systems width needs to be +1 the grid width instead of +2 for windows.
+            if os.name == 'posix':
+                width = len(file.readline())
+
+            position = y_coordinate * width + x_coordinate
+            file.seek(position)
             file.write('@')
+        self.position[0] = y_coordinate
+        self.position[1] = x_coordinate
 
-    # marks location as visited
-    def mark_as_visited(self):
-        self.map[self.position[0]][self.position[1]] = '|'
+    def update_player_location(self, player_position: list):
+        y_coordinate = player_position[0]
+        x_coordinate = player_position[1]
+        with open("../game_data/world.txt", 'r+', encoding="utf-8") as file:
+            width = len(file.readline()) + 1  # for some reason width won't catch the \r character
+            # for posix systems width needs to be +1 the grid width instead of +2 for windows.
+            if os.name == 'posix':
+                width = len(file.readline())
 
-    # finds where the player is on the map
-    def get_player_location(self):
-        x = 0
-        y = 0
-        with open("../game_data/world.txt", 'r', encoding="utf-8") as file:
-            for line in file.readlines():
-                for char in line:
-                    y += 1
-                    if char == '@':
-                        self.position[0] = x
-                        self.position[1] = y
-                        break
-                x += 1
+            position = y_coordinate * width + x_coordinate
+            file.seek(position)
+            file.write('@')
+        self.position[0] = y_coordinate
+        self.position[1] = x_coordinate
 
-        print(x, y)
-        return self.position
-
-    # the player uses this to change worlds
     def move_to_new_location(self, player_position: list):
         # change the player's current location index.
-        x_coordinate = player_position[0]
-        y_coordinate = player_position[1]
+        y_coordinate = player_position[0]
+        x_coordinate = player_position[1]
 
         if player_position == [-1, -1]:
             print("there is not a player on the map")
         else:
-            self.mark_as_visited()
+            print("choose a direction:")
             direction = input()
+            while direction != 'w' and direction != 'a' and direction != 's' and direction != 'd':
+                print("invalid input received, please enter direction again: ")
+                direction = input()
+
             match direction:
                 case "w":
-                    print("you travelled north")
-                    if x_coordinate == 0:
+                    if y_coordinate == 0:
                         print("can't move north")
                     else:
-                        x_coordinate = x_coordinate-1
-                        self.map[x_coordinate][y_coordinate] = '@'
+                        print("you travelled north")
+                        y_coordinate = y_coordinate-1
+                        self.map[y_coordinate][x_coordinate] = '@'
+
                 case "d":
-                    if y_coordinate == len(self.map[0]):
+                    if x_coordinate == self.width - 1:
                         print("can't move east")
                     else:
-                        y_coordinate = y_coordinate + 1
-                        self.map[x_coordinate][y_coordinate] = '@'
-
+                        print("you travelled east")
+                        x_coordinate = x_coordinate + 1
+                        self.map[y_coordinate][x_coordinate] = '@'
                 case "s":
-                    if x_coordinate == len(self.map):
+                    if y_coordinate == self.height - 1:
                         print("can't move south")
                     else:
-                        x_coordinate = x_coordinate + 1
-                        self.map[x_coordinate][y_coordinate] = '@'
+                        print("you travelled south")
+                        y_coordinate = y_coordinate + 1
+                        self.map[y_coordinate][x_coordinate] = '@'
                 case "a":
-                    if y_coordinate == 0:
+                    if x_coordinate == 0:
                         print("can't move west")
                     else:
-                        y_coordinate = y_coordinate - 1
-                        self.map[x_coordinate][y_coordinate] = '@'
+                        print("you travelled west")
+                        x_coordinate = x_coordinate - 1
+                        self.map[y_coordinate][x_coordinate] = '@'
 
-        self.write_map_to_text_file()
-
-    # loads location data
-    def load_locations(self, locations_info="../game_data/locations.json"):
-        try:
-            with open(locations_info, 'r', encoding='utf-8') as file_handle:
-                locations_data = json.load(file_handle)
-                for location in locations_data.values():
-                    name = location["name"]
-                    description = location[description]
-                    visited = location["visited_status"]
-                    has_trap = location["has_trap"]
-                    npcs = location["np_characters"]
-                    items = location["items"]
-                    positions = location["positions"]
-                    location = Location(name, description, visited, has_trap, npcs, items, positions)
-                    self.locations.append(location)
-        except FileNotFoundError:
-            print(f'File {locations_info} not found')
-        except IOError:
-            print(f'Unable to read file: {locations_info} ')
-        except json.JSONDecodeError as json_err:
-            print(json_err)
-
-    def load_items(self, item_info="../game_data/items.json"):
-        try:
-            with open(item_info, 'r', encoding='utf-8') as file_handle:
-                items_data = json.load(file_handle)
-                for item in items_data.values():
-                    name = item["name"]
-                    effect = item["item_effect"]
-                    data_gain = item["data_gain"]
-                    can_disable = item["can_disable"]
-                    this_item = Item(name, effect, data_gain, can_disable)
-                    self.items.append(this_item)
-        except FileNotFoundError:
-            print(f'File {item_info} not found')
-        except IOError:
-            print(f'Unable to read file {item_info}')
-        except json.JSONDecodeError as json_err:
-            print(json_err)
-
-    # function that loads npc information into npc class
-    def load_npc(self, npc_info="../game_data/np_characters.json"):
-        try:
-            with open(npc_info, 'r', encoding='utf-8') as file_handle:
-                npc_data = json.load(file_handle)
-                for np_character in npc_data.values():
-                    name = np_character["name"]
-                    dialogues = np_character["dialogues"]
-                    action = np_character["action"]
-                    npc = NPC(name, dialogues, action)
-                    self.npc_list.append(npc)
-        except FileNotFoundError:
-            print(f'File {npc_info} not found')
-        except IOError:
-            print(f'Unable to read file: {npc_info}')
-        except json.JSONDecodeError as json_err:
-            print(json_err)
+        player_position[0] = y_coordinate
+        player_position[1] = x_coordinate
+        self.update_player_location(player_position)
 
 
 if __name__ == "__main__":
     new_map = World()
     new_map.write_map_to_text_file()
     new_map.place_player()
-
+    new_map.move_to_new_location(new_map.position)
 
 
