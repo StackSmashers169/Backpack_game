@@ -5,7 +5,7 @@ from location import Location
 from npc import NPC
 from item import Item
 import json
-
+import random
 
 # this class handles all game operations and logic, includes a main function for playing the game.
 class Game:
@@ -74,6 +74,24 @@ class Game:
             print(f'Unable to read file: {npc_info}')
         except json.JSONDecodeError as json_err:
             print(json_err)
+
+    # each spot on the grid must be assigned a location.
+    # 4 for each of the types of empty room (8 total)
+    # 5 for each trap room (10 total)
+    # One for each of the unique locations (7) total
+    def assign_locations(self, locations: list):
+        # create a dictionary of key location object and value count
+        # of the 11 different locations.
+        location_mapping = {}
+        for i in range(len(locations)):
+            index = random.randint(0, 10)
+
+
+    def assign_items_to_locations(self):
+        pass
+
+    def assign_npcs_to_locations(self):
+        pass
 
 
 if __name__ == "__main__":

@@ -29,22 +29,6 @@
     ]
   },
 
-  "empty_roomC": {
-    "name": "Empty Location Type C",
-    "description": "Empty space detected",
-    "visited_status": false,
-    "has_trap": false,
-    "np_characters": [
-
-    ],
-    "items": [
-
-    ],
-    "positions":[
-
-    ]
-  },
-
   "Trap_Type_A": {
     "name": "Data_Fragmentation_Trap",
     "description": "Data Fragmentation Trap, 10b of data lost",
