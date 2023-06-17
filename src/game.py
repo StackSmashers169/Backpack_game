@@ -7,6 +7,7 @@ from item import Item
 import json
 import random
 
+
 # this class handles all game operations and logic, includes a main function for playing the game.
 class Game:
 
@@ -17,7 +18,7 @@ class Game:
         self.locations = []
         self.items = []
 
-# loads location data
+    # loads location data
     def load_locations(self, locations_info="../game_data/locations.json"):
         try:
             with open(locations_info, 'r', encoding='utf-8') as file_handle:
@@ -79,13 +80,10 @@ class Game:
     # 4 for each of the types of empty room (8 total)
     # 5 for each trap room (10 total)
     # One for each of the unique locations (7) total
-    def assign_locations(self, locations: list):
+    def assign_locations(self, locations: list, positions: list):
         # create a dictionary of key location object and value count
         # of the 11 different locations.
-        location_mapping = {}
-        for i in range(len(locations)):
-            index = random.randint(0, 10)
-
+        pass
 
     def assign_items_to_locations(self):
         pass
@@ -96,5 +94,3 @@ class Game:
 
 if __name__ == "__main__":
     pass
-
-

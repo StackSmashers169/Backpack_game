@@ -109,11 +109,17 @@ class World:
         player_position[1] = x_coordinate
         self.update_player_location(player_position)
 
+    def get_positions_as_list(self):
+        position_list = []
+        for i in range(self.height):
+            for j in range(self.width):
+                position_list.append([i, j])
+
+        return position_list
+
 
 if __name__ == "__main__":
     new_map = World()
-    new_map.write_map_to_text_file()
-    new_map.place_player()
-    new_map.move_to_new_location(new_map.position)
+    # test any "world" methods below
 
 
