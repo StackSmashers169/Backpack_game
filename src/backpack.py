@@ -1,10 +1,8 @@
-from typing import Sequence
+
 
 class BackPack:
     """
     BackPack Class
-
-
 
     ToDo: [X] Instantiate backpack
     ToDo: [X] Add Item

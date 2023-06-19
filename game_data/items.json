@@ -21,7 +21,7 @@
  },
 
   "packet_scanner": {
-    "name": "packet scanner",
+    "name": "Packet Scanner",
     "item_effect": "gives information on a reachable tile",
     "data_gain": 0,
     "can_disable": false
@@ -33,6 +33,13 @@
     "data_gain": 0,
     "can_disable": false
   },
+
+  "encryption_key":{
+    "name": "Encryption Key",
+    "item_effect": "Encryption key unlocks access to remote server",
+    "data_gain": 0,
+    "can_disable": false
+},
 
   "ip_address": {
     "name": "ip address",

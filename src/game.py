@@ -105,21 +105,21 @@ class Game:
             match item:
                 case "Database room":
                     for index in range(len(self.items)):
-                        if self.items[index].get_name() == "ip address":
+                        if self.items[index].get_name() == "IP Address":
                             location.add_item(self.items[index])
                             break
 
                 case "Connection Hub":
                     for index in range(len(self.items)):
-                        if self.items[index].get_name() == "bit_bucket" or \
+                        if self.items[index].get_name() == "Bit Bucket" or \
                                 self.items[index].get_name() == "packet_scanner":
                             location.add_item(self.items[index])
 
                 case "Internet Forum":
                     for index in range(len(self.items)):
-                        if self.items[index].get_name() == "anti_virus_module":
+                        if self.items[index].get_name() == "anti_virus_module" or \
+                                self.items[index].get_name() == "Encryption Key":
                             location.add_item(self.items[index])
-                            break
 
                 case "API Store":
                     for index in range(len(self.items)):
@@ -174,7 +174,6 @@ class Game:
                         if self.npc_list[index].get_name() == "Bitcoin Miner Adam":
                             location.add_npc(self.npc_list[index])
                             break
-
 
 
 if __name__ == "__main__":
