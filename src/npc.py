@@ -2,15 +2,11 @@
 
 class NPC:
 
-    def __init__(self, name: str, dialogues: list, action: str):
+    def __init__(self, name: str, dialogue: str, gives_item: bool, damages_you: bool):
         self.name = name
-        self._lines = []
-        if dialogues is None:
-            dialogues = []
-        for dialogue in dialogues:
-            self._lines.append(dialogue)
-        self.action = action
-        self._dialogue_option = False
+        self.dialogue = dialogue
+        self.gives_item = gives_item
+        self.damages_you = damages_you
 
     def get_name(self):
         return self.name

@@ -16,11 +16,6 @@ class Player:
         self.backpack = BackPack(self.items)
         self.position = []
 
-    # saves the player's position on the map (might implement this outside of the project
-    # since saving the map isn't a requirement)
-    def save_position(self, x_coordinate, y_coordinate):
-        pass
-
     # searches location for an item
     def search_location(self):
         pass

@@ -7,30 +7,24 @@
     "max_positions": 4,
     "np_characters": [
     ],
-    "items":[
+    "items": [
     ],
     "positions": [
-
     ]
   },
-
   "empty_roomB": {
     "name": "Empty Location Type B",
     "description": "Nothing to see here",
     "visited_status": false,
     "has_trap": false,
     "max_positions": 4,
-    "np_characters":[
-
+    "np_characters": [
     ],
-    "items":[
-
+    "items": [
     ],
-    "positions":[
-
+    "positions": [
     ]
   },
-
   "Trap_Type_A": {
     "name": "Data Fragmentation Trap",
     "description": "Data Fragmentation Trap, 10b of data lost",
@@ -38,51 +32,38 @@
     "has_trap": true,
     "max_positions": 5,
     "np_characters": [
-
     ],
     "items": [
-
     ],
     "positions": [
-
     ]
-
   },
-
   "Trap_Type_B": {
     "name": "Corrupt Data Packet",
     "description": "A corrupt packet enters your program destroying 10b of data",
-    "visited_satus": false,
+    "visited_status": false,
     "has_trap": true,
     "max_positions": 5,
     "np_characters": {
-
     },
     "items": [
-
     ],
     "positions": [
-
     ]
   },
-
   "Database_Room": {
-    "name": "Database_Room",
+    "name": "Database Room",
     "description": "A room full of bytes of data",
     "visited_status": false,
     "has_trap": false,
     "max_positions": 1,
     "np_characters": {
-
     },
     "items": [
-
     ],
     "positions": [
-
     ]
   },
-
   "Connection_Hub": {
     "name": "Connection Hub",
     "description": "A room full of connections",
@@ -90,16 +71,12 @@
     "has_trap": false,
     "max_positions": 1,
     "np_characters": {
-
     },
     "items": [
-
     ],
     "positions": [
-
     ]
   },
-
   "internet_forum": {
     "name": "Internet Forum",
     "description": "A room full of angry people shouting at each other",
@@ -107,13 +84,10 @@
     "has_trap": false,
     "max_positions": 1,
     "np_characters": {
-
     },
     "items": [
-
     ],
     "positions": {
-
     }
   },
   "The_Honeypot": {
@@ -123,66 +97,49 @@
     "has_trap": true,
     "max_positions": 1,
     "np_characters": {
-
     },
     "items": [
-
     ],
     "positions": [
-
+    ]
+  },
+  "The API Center": {
+    "name": "API Store",
+    "description": "A shady API selling business' HQ",
+    "visited_status": false,
+    "has_trap": false,
+    "max_positions": 1,
+    "np_characters": [
     ],
-    "The API Center": {
-      "name": "API Store",
-      "description":"A shady API selling business' HQ",
-      "visited_status": false,
-      "has_trap": false,
-      "max_positions": 1,
-      "np_characters":[
-
-      ],
-
-
-      "items":[
-
-      ],
-
-
-      "positions": [
-
-      ]
+    "items": [
+    ],
+    "positions": [
+    ]
     },
-    "BCOM Bitcoin Mine": {
+  "BCOM Bitcoin Mine": {
       "name": "BCOM Bitcoin Mine",
-      "description":"A big mining operation in sector D of webworld",
+      "description": "A big mining operation in sector D of webworld",
       "visited_status": false,
       "has_trap": false,
       "max_positions": 1,
-      "np_characters":[
-
+      "np_characters": [
       ],
       "items": [
-
       ],
       "positions": [
-
       ]
     },
-    "My Remote Server": {
-      "name": "My Remote Server":
-      "description": "Made it back safely, those bozos can't catch me now",
-      "visited-status": false,
-      "has_trap": false,
-      "max_positions": 1,
-      "np_characters":[
-
-      ],
-      "items": [
-
-      ],
-      "positions":[
-
-      ]
+  "My Remote Server": {
+    "name": "My Remote Server",
+    "description": "Made it to the remote server! I should be safe for now!",
+    "visited_status": false,
+    "has_trap": false,
+    "max_positions": 1,
+    "np_characters": [
+    ],
+    "items": [
+    ],
+    "positions": [
+    ]
   }
-
-
 }

@@ -40,7 +40,7 @@
   },
 
   "ip_address": {
-    "name": "ip address",
+    "name": "IP Address",
     "item_effect": "shows the location of your remote server",
     "data_gain":  0,
     "can_disable": false,

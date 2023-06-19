@@ -31,15 +31,15 @@ class Game:
                 locations_data = json.load(file_handle)
                 for location in locations_data.values():
                     name = location["name"]
-                    description = location[description]
+                    description = location["description"]
                     visited = location["visited_status"]
                     has_trap = location["has_trap"]
                     max_positions = location["max_positions"]
                     npcs = location["np_characters"]
                     items = location["items"]
-                    positions = location["positions"]
+                    locations = location["positions"]
                     location = Location(name, description, visited, has_trap, max_positions,
-                                        npcs, items, positions)
+                                        npcs, items, locations)
                     self.locations.append(location)
         except FileNotFoundError:
             print(f'File {locations_info} not found')
@@ -76,9 +76,10 @@ class Game:
                 npc_data = json.load(file_handle)
                 for np_character in npc_data.values():
                     name = np_character["name"]
-                    dialogues = np_character["dialogues"]
-                    action = np_character["action"]
-                    npc = NPC(name, dialogues, action)
+                    dialogue = np_character["dialogue"]
+                    gives_item = np_character["gives_item"]
+                    damages_you = np_character["damages_you"]
+                    npc = NPC(name, dialogue, gives_item, damages_you)
                     self.npc_list.append(npc)
         except FileNotFoundError:
             print(f'File {npc_info} not found')
@@ -91,15 +92,15 @@ class Game:
     # 4 for each of the types of empty room (8 total)
     # 5 for each trap room (10 total)
     # One for each of the unique locations (7) total
-    def assign_locations(self, positions: list):
+    def assign_locations(self, map_positions: list):
         # create a dictionary of key location object and value count
         # of the 11 different locations.
-        random.shuffle(positions)
+        random.shuffle(map_positions)
         fill_positions = 0
         count = 0
-        for location in positions:
-            while fill_positions < location.max_positions or count == len(positions):
-                location.add_map_position(positions[count])
+        for location in self.locations:
+            while fill_positions < location.max_positions and count < len(map_positions):
+                location.add_map_position(map_positions[count])
                 count += 1
                 fill_positions += 1
             fill_positions = 0
@@ -109,10 +110,10 @@ class Game:
     def assign_items_to_locations(self):
 
         for location in self.locations:
-            item = location.name
+            unique_location = location.name
             # match case items
-            match item:
-                case "Database room":
+            match unique_location:
+                case "Database Room":
                     for index in range(len(self.items)):
                         if self.items[index].get_name() == "IP Address":
                             location.add_item(self.items[index])
@@ -138,19 +139,19 @@ class Game:
 
                 case "BCOM Bitcoin Mine":
                     for index in range(len(self.items)):
-                        if self.items[index].get_name() == "byte_package":
+                        if self.items[index].get_name() == "Byte Package":
                             location.add_item(self.items[index])
                             break
 
     # to speed up process cases with only one npc addition have break statements.
     def assign_npcs_to_locations(self):
         for location in self.locations:
-            item = location.name
+            unique_location = location.name
 
-            match item:
-                case "Database_Room":
+            match unique_location:
+                case "Database Room":
                     for index in range(len(self.npc_list)):
-                        if self.npc_list[index].get_name() == "Database Maintenace Crew":
+                        if self.npc_list[index].get_name() == "Database Maintenance Crew":
                             location.add_npc(self.npc_list[index])
                             break
 
@@ -184,14 +185,6 @@ class Game:
                             location.add_npc(self.npc_list[index])
                             break
 
-    # now that we've loaded everything let's start playing the game
-    # first introduce the player to the world of the game.
-    def game_intro(self):
-        print("A Hacker's adventure in Web World!")
-        for i in range(10):
-            print("")
-        print("Welcome to Web World!")
-
     def build_world(self):
         self.assign_locations(self.world.get_positions_as_list())
         self.assign_items_to_locations()
@@ -204,8 +197,29 @@ class Game:
         player = Player(player_name)
         return player
 
+    # now that we've loaded everything let's start playing the game
+    # first introduce the player to the world of the game.
+    def start_game(self):
+        print("A Hacker's adventure in Web World!")
+        for i in range(10):
+            print("")
+        print("Welcome to Web World!")
+        for i in range(10):
+            print("")
+        self.create_player()
+
+    def game_over(self):
+        pass
+
 
 if __name__ == "__main__":
     new_world = World()
     new_game = Game(new_world)
-    print(new_game.locations[0].name)
+    new_game.build_world()
+
+
+
+
+
+
+

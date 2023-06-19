@@ -19,10 +19,12 @@ class Item:
         message = "Using the {} you successfully disabled the trap".format(self.name)
         print(message)
 
+    def gain_data(self, data: int):
+        data = data + 10
+        return data
     # fetches name
     def get_name(self):
         return self.name
 
-    def gain_data(self, data: int):
-        data = data + 10
-        return data
+
+

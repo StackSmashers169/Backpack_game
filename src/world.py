@@ -19,18 +19,25 @@ class World:
         self.position = [-1, -1]  # default position when player is not on the map
         self.name = "Web World"
 
-    # writes the map to the text file
+    # writes the map to the text file and then prints same map to terminal
     def write_map_to_text_file(self):
         with open("../game_data/world.txt", 'w') as file:
             for i in range(self.height):
                 for j in range(self.width):
                     file.write(self.map[i][j])
                 file.write("\n")
+        self.read_map_to_terminal()
+
+    # writes the map into the terminal so player can keep track of it.
+    def read_map_to_terminal(self):
+        with open("../game_data/world.txt", 'r') as file:
+            game_map = file.read()
+            print(game_map)
 
     # places player in a random position on the using random access
-    def place_player(self):
-        y_coordinate = random.randint(0, 4)
-        x_coordinate = random.randint(0, 4)
+    def place_player(self, pos_y, pos_x):
+        y_coordinate = pos_y
+        x_coordinate = pos_x
         with open("../game_data/world.txt", 'r+', encoding="utf-8") as file:
             width = len(file.readline()) + 1  # for some reason width won't catch the \r character
             # for posix systems width needs to be +1 the grid width instead of +2 for windows.
@@ -42,6 +49,7 @@ class World:
             file.write('@')
         self.position[0] = y_coordinate
         self.position[1] = x_coordinate
+        self.read_map_to_terminal()
 
     def update_player_location(self, player_position: list):
         y_coordinate = player_position[0]
@@ -121,5 +129,6 @@ class World:
 if __name__ == "__main__":
     new_map = World()
     # test any "world" methods below
+    new_map.write_map_to_text_file()
 
 

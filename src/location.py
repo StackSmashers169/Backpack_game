@@ -56,3 +56,11 @@ class Location:
         data = 0
         return data
 
+    def get_positions(self):
+        return self._world_positions
+
+    def get_items(self):
+        return self._items_list
+
+    def get_npcs(self):
+        return self._npc_list
