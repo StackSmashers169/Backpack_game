@@ -5,9 +5,10 @@ from backpack import BackPack
 from item import Item
 from location import Location
 
+
 class Player:
 
-    def __init__(self, name):
+    def __init__(self, name: str):
         self.name = name
         self.is_alive = True
         self.data = 50  # data represents HP for this character or more precisely 50b.
@@ -34,11 +35,11 @@ class Player:
 
     # if player enters trap room this will happen.
     def entered_trap_room(self, location: Location):
-        if location.name == "Data Fragmentation Trap":
+        if location.get_location_name() == "Data Fragmentation Trap":
             location.read_location_description()
             self.data = self.data - 10
 
-        if location.name == "Corrupt Data Packet":
+        if location.get_location_name == "Corrupt Data Packet":
             location.read_location_description()
             self.data = self.data - 10
 

@@ -13,7 +13,7 @@ class Item:
 
     # displays effect on console/terminal
     def read_effect(self):
-        pass
+        print(self.item_effect)
 
     def disable_trap(self):
         message = "Using the {} you successfully disabled the trap".format(self.name)

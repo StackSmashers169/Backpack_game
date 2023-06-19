@@ -11,15 +11,21 @@ import random
 # this class handles all game operations and logic, includes a main function for playing the game.
 class Game:
 
-    def __init__self(self, world: World, player: Player):
+    def __init__(self, world: World):
         self.world = world
-        self.player = player
         self.npc_list = []
         self.locations = []
         self.items = []
+        self.player = None
+
+        # load all data into the game
+        self.load_locations()
+        self.load_npc()
+        self.load_items()
 
     # loads location data
     def load_locations(self, locations_info="../game_data/locations.json"):
+        print("loading locations")
         try:
             with open(locations_info, 'r', encoding='utf-8') as file_handle:
                 locations_data = json.load(file_handle)
@@ -43,6 +49,7 @@ class Game:
             print(json_err)
 
     def load_items(self, item_info="../game_data/items.json"):
+        print("loading items")
         try:
             with open(item_info, 'r', encoding='utf-8') as file_handle:
                 items_data = json.load(file_handle)
@@ -51,7 +58,8 @@ class Game:
                     effect = item["item_effect"]
                     data_gain = item["data_gain"]
                     can_disable = item["can_disable"]
-                    this_item = Item(name, effect, data_gain, can_disable)
+                    can_scan = item["can_scan"]
+                    this_item = Item(name, effect, data_gain, can_disable, can_scan)
                     self.items.append(this_item)
         except FileNotFoundError:
             print(f'File {item_info} not found')
@@ -62,6 +70,7 @@ class Game:
 
     # function that loads npc information into npc class
     def load_npc(self, npc_info="../game_data/np_characters.json"):
+        print("loading non playable characters")
         try:
             with open(npc_info, 'r', encoding='utf-8') as file_handle:
                 npc_data = json.load(file_handle)
@@ -88,7 +97,7 @@ class Game:
         random.shuffle(positions)
         fill_positions = 0
         count = 0
-        for location in self.locations:
+        for location in positions:
             while fill_positions < location.max_positions or count == len(positions):
                 location.add_map_position(positions[count])
                 count += 1
@@ -183,6 +192,20 @@ class Game:
             print("")
         print("Welcome to Web World!")
 
+    def build_world(self):
+        self.assign_locations(self.world.get_positions_as_list())
+        self.assign_items_to_locations()
+        self.assign_npcs_to_locations()
+
+    # use this to create the player.
+    def create_player(self):
+        print("Enter your player name: ")
+        player_name = input()
+        player = Player(player_name)
+        return player
+
 
 if __name__ == "__main__":
-    pass
+    new_world = World()
+    new_game = Game(new_world)
+    print(new_game.locations[0].name)

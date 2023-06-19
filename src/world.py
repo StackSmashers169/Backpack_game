@@ -17,9 +17,6 @@ class World:
         self.height = 5
         self.map = [['_' for j in range(self.width)] for i in range(self.height)]
         self.position = [-1, -1]  # default position when player is not on the map
-        self.npc_list = []
-        self.locations = []
-        self.items = []
         self.name = "Web World"
 
     # writes the map to the text file
