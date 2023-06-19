@@ -28,10 +28,12 @@ class Game:
                     description = location[description]
                     visited = location["visited_status"]
                     has_trap = location["has_trap"]
+                    max_positions = location["max_positions"]
                     npcs = location["np_characters"]
                     items = location["items"]
                     positions = location["positions"]
-                    location = Location(name, description, visited, has_trap, npcs, items, positions)
+                    location = Location(name, description, visited, has_trap, max_positions,
+                                        npcs, items, positions)
                     self.locations.append(location)
         except FileNotFoundError:
             print(f'File {locations_info} not found')
@@ -80,16 +82,99 @@ class Game:
     # 4 for each of the types of empty room (8 total)
     # 5 for each trap room (10 total)
     # One for each of the unique locations (7) total
-    def assign_locations(self, locations: list, positions: list):
+    def assign_locations(self, positions: list):
         # create a dictionary of key location object and value count
         # of the 11 different locations.
-        pass
+        random.shuffle(positions)
+        fill_positions = 0
+        count = 0
+        for location in self.locations:
+            while fill_positions < location.max_positions or count == len(positions):
+                location.add_location(positions[count])
+                count += 1
+                fill_positions += 1
+            fill_positions = 0
 
+    # unique locations have a specific item so assign them accordingly.
+    # to speed up process cases with only one item addition have break statements.
     def assign_items_to_locations(self):
-        pass
 
+        for location in self.locations:
+            item = location.name
+            # match case items
+            match item:
+                case "Database room":
+                    for index in range(len(self.items)):
+                        if self.items[index].get_name() == "ip address":
+                            location.add_item(self.items[index])
+                            break
+
+                case "Connection Hub":
+                    for index in range(len(self.items)):
+                        if self.items[index].get_name() == "bit_bucket" or \
+                                self.items[index].get_name() == "packet_scanner":
+                            location.add_item(self.items[index])
+
+                case "Internet Forum":
+                    for index in range(len(self.items)):
+                        if self.items[index].get_name() == "anti_virus_module":
+                            location.add_item(self.items[index])
+                            break
+
+                case "API Store":
+                    for index in range(len(self.items)):
+                        if self.items[index].get_name() == "Wireshark":
+                            location.add_item(self.items[index])
+                            break
+
+                case "BCOM Bitcoin Mine":
+                    for index in range(len(self.items)):
+                        if self.items[index].get_name() == "byte_package":
+                            location.add_item(self.items[index])
+                            break
+
+    # to speed up process cases with only one npc addition have break statements.
     def assign_npcs_to_locations(self):
-        pass
+        for location in self.locations:
+            item = location.name
+
+            match item:
+                case "Database_Room":
+                    for index in range(len(self.npc_list)):
+                        if self.npc_list[index].get_name() == "Database Maintenace Crew":
+                            location.add_npc(self.npc_list[index])
+                            break
+
+                case "Connection Hub":
+                    for index in range(len(self.npc_list)):
+                        if self.npc_list[index].get_name() == "Middle Man" or \
+                                self.npc_list[index].get_name() == "Random Script Kiddie":
+                            location.add_npc(self.npc_list[index])
+
+                case "Internet Forum":
+                    for index in range(len(self.npc_list)):
+                        if self.npc_list[index].get_name() == "Angry Forum Crowd" or \
+                                self.npc_list[index].get_name() == "Frustrated Hacker":
+                            location.add_npc(self.npc_list[index])
+
+                case "Honeypot Server":
+                    for index in range(len(self.npc_list)):
+                        if self.npc_list[index].get_name() == "Server Security":
+                            location.add_npc(self.npc_list[index])
+                            break
+
+                case "API Store":
+                    for index in range(len(self.npc_list)):
+                        if self.npc_list[index].get_name() == "API Salesperson":
+                            location.add_npc(self.npc_list[index])
+                            break
+
+                case "BCOM Bitcoin Mine":
+                    for index in range(len(self.npc_list)):
+                        if self.npc_list[index].get_name() == "Bitcoin Miner Adam":
+                            location.add_npc(self.npc_list[index])
+                            break
+
 
 
 if __name__ == "__main__":

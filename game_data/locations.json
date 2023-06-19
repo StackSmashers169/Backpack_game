@@ -116,11 +116,11 @@
 
     }
   },
-  "the_server_room": {
-    "name": "The Server Room",
-    "description": "A room with plenty of useful information that you probably don't have permission to see",
+  "The_Honeypot": {
+    "name": "Honeypot Server",
+    "description": "I knew the information was too good to be true!",
     "visited_status": false,
-    "has_trap": false,
+    "has_trap": true,
     "max_positions": 1,
     "np_characters": {
 
@@ -132,7 +132,7 @@
 
     ],
     "The API Center": {
-      "name": "The Api Center",
+      "name": "API Store",
       "description":"A shady API selling business' HQ",
       "visited_status": false,
       "has_trap": false,
@@ -152,7 +152,7 @@
       ]
     },
     "BCOM Bitcoin Mine": {
-      "name": "BCOM bitcoin mine",
+      "name": "BCOM Bitcoin Mine",
       "description":"A big mining operation in sector D of webworld",
       "visited_status": false,
       "has_trap": false,

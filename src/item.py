@@ -17,4 +17,6 @@ class Item:
     def disable_trap(self):
         pass
 
-
+    #fetches name
+    def get_name(self):
+        return self.name

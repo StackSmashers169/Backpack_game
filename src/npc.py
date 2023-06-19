@@ -12,9 +12,8 @@ class NPC:
         self.action = action
         self._dialogue_option = False
 
-    def change_dialogue_options(self, choice: str):
-        if str == "yes" or "Yes":
-            self._dialogue_option = True
+    def get_name(self):
+        return self.name
 
     def read_dialogue(self, option: int):
         print(self._lines[option])

@@ -90,6 +90,7 @@ class World:
                         print("you travelled east")
                         x_coordinate = x_coordinate + 1
                         self.map[y_coordinate][x_coordinate] = '@'
+
                 case "s":
                     if y_coordinate == self.height - 1:
                         print("can't move south")
@@ -97,6 +98,7 @@ class World:
                         print("you travelled south")
                         y_coordinate = y_coordinate + 1
                         self.map[y_coordinate][x_coordinate] = '@'
+
                 case "a":
                     if x_coordinate == 0:
                         print("can't move west")

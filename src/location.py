@@ -1,14 +1,16 @@
 # Code written by Victor J Wilson
+from item import Item
+from npc import NPC
 
 class Location:
 
-    def __init__(self, name: str, description: str, visited: bool, has_trap: bool, np_characters: list,
-                 items: list, positions: list):
+    def __init__(self, name: str, description: str, visited: bool, has_trap: bool, max_positions: int,
+                 np_characters: list, items: list, positions: list):
         self.name = name
         self.description = description
         self.visited = visited
         self.has_trap = has_trap
-
+        self.max_positions = max_positions
         self._npc_list = []
         self._items_list = []
         self._world_positions = []
@@ -31,3 +33,11 @@ class Location:
     def read_location_description(self):
         print(self.description)
 
+    def add_location(self, position: list):
+        self._world_positions.append(position)
+
+    def add_item(self, item: Item):
+        self._items_list.append(item)
+
+    def add_npc(self, npc: NPC):
+        self._npc_list.append(npc)

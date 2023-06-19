@@ -1,81 +1,55 @@
 {
   "database_maintenance_crew": {
-    "name": "Database maintenance crew",
-    "dialogues": [
-      "What how did you get in here?",
-      "Oh your that white hat hacker we hired? Make sure you do these security patches pronto!"
-    ],
-    "action": " "
+    "name": "Database Maintenance Crew",
+    "dialogues": "What how did you get in here? Oh your that white hat hacker we hired? Make sure you do these security patches pronto!",
+    "gives_item": false,
+    "damages_you": false
   },
 
   "the_middle_man": {
-    "name": "The middle man",
-    "dialogues": [
-
-    ],
-    "action": "none"
+    "name": " Middle Man",
+    "dialogues": "Don't mind me you go on right ahead",
+    "action": false
   },
   "random_script_kiddie": {
-    "name": "Random script kiddie",
-    "dialogues":[
-
-    ],
-    "action": "none"
+    "name": "Random Script Kiddie",
+    "dialogues": "teach me how to be better at hacking! I'll give this item to you as payment for your services!",
+    "gives_item": true,
+    "damages_you": false
   },
 
   "Server Security": {
-    "name": "Server security",
-    "dialogues": [
-
-    ],
-    "action": "cause you to lose 50 data"
+    "name": "Server Security",
+    "dialogues": "Sorry kid, but I gotta kick you from the system, admin's orders don't take it personally",
+    "gives_item": false,
+    "damages_you": true
   },
 
-  "The_forum_crowd": {
-    "name": "The forum crowd",
-    "dialogues":[
-
-    ],
-    "action": " "
+  "Angry_forum_crowd": {
+    "name": "Angry Forum Crowd",
+    "dialogues":"You tried talking to the crowd but instead received lots of abusive language",
+    "gives_item": false,
+    "damages_you": false
   },
+
   "frustrated_hacker": {
-    "name": "Frustrated hacker",
-    "dialogues": [
-
-    ],
-    "action": "gives you 10 data"
+    "name": "Frustrated Hacker",
+    "dialogues": "you seem aggrieved... ah don't let them get to you, here take this anti-virus module, you'll need it on your journey",
+    "gives_item": false,
+    "damages_you": false
   },
 
   "API Salesperson":{
-    "name": "API salesperson",
-    "dialogues": [
-
-    ],
-    "action": "gives you the wireshark"
+    "name": "API Salesperson",
+    "dialogues": "Ah just the person I was looking for! Here take this thing, nobody seems to want it, so I'll give it to you for free",
+    "gives_item": false,
+    "damages_you": false
   },
 
   "Bitcoin Miner Adam": {
     "name": "Bitcoin Miner Adam",
-    "dialogues": [
-
-    ],
-    "action": "gives you the bit bucket"
-  },
-
-  "Bitcoin Miner Brody": {
-    "name": "Bitcoin Miner Brody",
-    "dialogues": [
-
-    ],
-    "action": "gives you byte package"
-  },
-
-  "Jones": {
-    "name": "Jones",
-    "dialogues": [
-
-    ],
-    "action": " "
+    "dialogues": "All this mining is hard work eh? I found this packet of data but I have no use for it",
+    "gives_item": false,
+    "damages_you": false
   }
-
 }
