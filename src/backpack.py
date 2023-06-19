@@ -28,7 +28,7 @@ class BackPack:
         self._backpack.sort()
 
     def count(self):
-        return self._backpack.count()
+        return self._backpack.count
 
     def __len__(self):
         return len(self._backpack)
@@ -49,6 +49,19 @@ class BackPack:
         :param item:
         :return: -1 | False | integer
         """
+        low = 0
+        high = len(self._backpack) - 1
 
+        while low <= high:
+            mid = (low + high)//2
+            mid_str = self._backpack[mid]
 
-        return None
+            if mid_str == item:
+                return mid
+            elif mid_str < item:
+                low = mid + 1
+            else:
+                high = mid - 1
+
+        return -1
+
