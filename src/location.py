@@ -2,6 +2,7 @@
 from item import Item
 from npc import NPC
 
+
 class Location:
 
     def __init__(self, name: str, description: str, visited: bool, has_trap: bool, max_positions: int,
@@ -33,7 +34,7 @@ class Location:
     def read_location_description(self):
         print(self.description)
 
-    def add_location(self, position: list):
+    def add_map_position(self, position: list):
         self._world_positions.append(position)
 
     def add_item(self, item: Item):
@@ -41,3 +42,17 @@ class Location:
 
     def add_npc(self, npc: NPC):
         self._npc_list.append(npc)
+
+    # different locations will do different things to the player
+    def get_location_name(self):
+        return self.name
+
+    def trap_room(self, data: int):
+        data = data - 10
+        return data
+
+    """Entering the Honeypot server forces you to interact with server security which drops your data to 0"""
+    def server_security(self, data: int):
+        data = 0
+        return data
+

@@ -20,6 +20,7 @@ class World:
         self.npc_list = []
         self.locations = []
         self.items = []
+        self.name = "Web World"
 
     # writes the map to the text file
     def write_map_to_text_file(self):
@@ -68,10 +69,10 @@ class World:
         if player_position == [-1, -1]:
             print("there is not a player on the map")
         else:
-            print("choose a direction:")
+            print("press w(north) a(west) s(south) d(east) to move")
             direction = input()
             while direction != 'w' and direction != 'a' and direction != 's' and direction != 'd':
-                print("invalid input received, please enter direction again: ")
+                print("invalid input received, please enter w, a, s or d: ")
                 direction = input()
 
             match direction:

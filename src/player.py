@@ -2,7 +2,8 @@
 
 
 from backpack import BackPack
-
+from item import Item
+from location import Location
 
 class Player:
 
@@ -28,12 +29,16 @@ class Player:
         pass
 
     # called if player triggers a gain_hp tile
-    def gain_hp(self):
+    def gain_data(self):
         pass
 
-    # called if player triggers a lose_hp tile
+    # if player enters trap room this will happen.
+    def entered_trap_room(self, location: Location):
+        if location.name == "Data Fragmentation Trap":
+            location.read_location_description()
+            self.data = self.data - 10
 
-    def lose_hp(self):
-        pass
-
+        if location.name == "Corrupt Data Packet":
+            location.read_location_description()
+            self.data = self.data - 10
 

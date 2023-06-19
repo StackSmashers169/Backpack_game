@@ -90,7 +90,7 @@ class Game:
         count = 0
         for location in self.locations:
             while fill_positions < location.max_positions or count == len(positions):
-                location.add_location(positions[count])
+                location.add_map_position(positions[count])
                 count += 1
                 fill_positions += 1
             fill_positions = 0
@@ -112,14 +112,14 @@ class Game:
                 case "Connection Hub":
                     for index in range(len(self.items)):
                         if self.items[index].get_name() == "Bit Bucket" or \
-                                self.items[index].get_name() == "packet_scanner":
+                                self.items[index].get_name() == "Packet Scanner":
                             location.add_item(self.items[index])
 
                 case "Internet Forum":
                     for index in range(len(self.items)):
-                        if self.items[index].get_name() == "anti_virus_module" or \
-                                self.items[index].get_name() == "Encryption Key":
+                        if self.items[index].get_name() == "Anti Virus Module":
                             location.add_item(self.items[index])
+                            break
 
                 case "API Store":
                     for index in range(len(self.items)):
@@ -174,6 +174,14 @@ class Game:
                         if self.npc_list[index].get_name() == "Bitcoin Miner Adam":
                             location.add_npc(self.npc_list[index])
                             break
+
+    # now that we've loaded everything let's start playing the game
+    # first introduce the player to the world of the game.
+    def game_intro(self):
+        print("A Hacker's adventure in Web World!")
+        for i in range(10):
+            print("")
+        print("Welcome to Web World!")
 
 
 if __name__ == "__main__":

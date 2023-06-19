@@ -32,7 +32,7 @@
   },
 
   "Trap_Type_A": {
-    "name": "Data_Fragmentation_Trap",
+    "name": "Data Fragmentation Trap",
     "description": "Data Fragmentation Trap, 10b of data lost",
     "visited_status": false,
     "has_trap": true,
@@ -50,7 +50,7 @@
   },
 
   "Trap_Type_B": {
-    "name": "Corrupt_Data_Packet",
+    "name": "Corrupt Data Packet",
     "description": "A corrupt packet enters your program destroying 10b of data",
     "visited_satus": false,
     "has_trap": true,
