@@ -200,27 +200,16 @@ class Game:
                 return self.locations[index]
         return self.locations[0]
 
-
     # now that we've loaded everything let's start playing the game
     # first introduce the player to the world of the game.
     def game_over(self):
         pass
 
 
+# main function for testing purposes
 if __name__ == "__main__":
+    pass
 
-    print("A Hacker's adventure in Web World!")
-    for i in range(10):
-        print("")
-    print("Welcome to Web World!")
-    for i in range(10):
-        print("")
-
-    print("Enter player name")
-    player_name = input()
-    new_player = Player(player_name)
-    new_world = World()
-    new_game = Game(new_world, new_player)
 
 
 
