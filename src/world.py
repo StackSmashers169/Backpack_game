@@ -1,6 +1,5 @@
 # Code by Victor J Wilson
 import os
-import random
 
 
 # the first thing to be built, you can't have a game without a world to put it in
@@ -12,6 +11,7 @@ class World:
 
     # size of world should be 5 by 5 for a good challenging experience
     """
+
     def __init__(self):
         self.width = 5
         self.height = 5
@@ -36,6 +36,7 @@ class World:
 
     # places player in a random position on the using random access
     def place_player(self, pos_y, pos_x):
+        print("You wake up to find yourself in an empty room, hurry up a find the remote server!")
         y_coordinate = pos_y
         x_coordinate = pos_x
         with open("../game_data/world.txt", 'r+', encoding="utf-8") as file:
@@ -86,7 +87,7 @@ class World:
                         print("can't move north")
                     else:
                         print("you travelled north")
-                        y_coordinate = y_coordinate-1
+                        y_coordinate = y_coordinate - 1
                         self.map[y_coordinate][x_coordinate] = '@'
 
                 case "d":
@@ -130,5 +131,3 @@ if __name__ == "__main__":
     new_map = World()
     # test any "world" methods below
     new_map.write_map_to_text_file()
-
-

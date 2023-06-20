@@ -29,7 +29,7 @@ class Location:
         if positions is None:
             positions = []
         for position in positions:
-            self._world_positions = []
+            self._world_positions.append(position)
 
     def read_location_description(self):
         print(self.description)
@@ -43,9 +43,16 @@ class Location:
     def add_npc(self, npc: NPC):
         self._npc_list.append(npc)
 
-    # different locations will do different things to the player
+    # get location name
     def get_location_name(self):
         return self.name
+
+    # matches position on board with location assigned to it.
+    def match_position(self, map_position: list):
+        for position in self._world_positions:
+            if map_position == position:
+                return True
+        return False
 
     def trap_room(self, data: int):
         data = data - 10
@@ -56,11 +63,4 @@ class Location:
         data = 0
         return data
 
-    def get_positions(self):
-        return self._world_positions
 
-    def get_items(self):
-        return self._items_list
-
-    def get_npcs(self):
-        return self._npc_list

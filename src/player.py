@@ -4,7 +4,7 @@
 from backpack import BackPack
 from item import Item
 from location import Location
-
+from npc import NPC
 
 class Player:
 
@@ -17,24 +17,18 @@ class Player:
         self.position = []
 
     # searches location for an item
-    def search_location(self):
-        pass
+    def search_location(self, location: Location):
+        print("You searched the location for an item")
 
     # if an NPC(s) exists in this location you can talk to them.
     def talk_to_npc(self):
         pass
 
-    # called if player triggers a gain_hp tile
-    def gain_data(self):
+    # searches for the item and then uses it, then "pops" the item from the backpack.
+    def use_item(self, item):
         pass
 
     # if player enters trap room this will happen.
     def entered_trap_room(self, location: Location):
-        if location.get_location_name() == "Data Fragmentation Trap":
-            location.read_location_description()
-            self.data = self.data - 10
-
-        if location.get_location_name == "Corrupt Data Packet":
-            location.read_location_description()
-            self.data = self.data - 10
+        pass
 

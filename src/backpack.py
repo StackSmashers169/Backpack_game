@@ -39,12 +39,12 @@ class BackPack:
             self._backpack.append(item)
             self.sort()
 
-    def in_backpack(self, item):
+    def in_backpack(self, item_name):
         """
         Complete this method using a binary search
         returns -1 or False if not found
         returns position if found
-        :param item:
+        :param item_name:
         :return: -1 | False | integer
         """
         low = 0
@@ -52,11 +52,11 @@ class BackPack:
 
         while low <= high:
             mid = (low + high)//2
-            mid_str = self._backpack[mid]
+            mid_item = self._backpack[mid].name
 
-            if mid_str == item:
+            if mid_item == item_name:
                 return mid
-            elif mid_str < item:
+            elif mid_item < item_name:
                 low = mid + 1
             else:
                 high = mid - 1

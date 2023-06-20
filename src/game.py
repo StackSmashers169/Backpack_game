@@ -11,12 +11,12 @@ import random
 # this class handles all game operations and logic, includes a main function for playing the game.
 class Game:
 
-    def __init__(self, world: World):
+    def __init__(self, world: World, player: Player):
         self.world = world
         self.npc_list = []
         self.locations = []
         self.items = []
-        self.player = None
+        self.player = player
 
         # load all data into the game
         self.load_locations()
@@ -190,32 +190,38 @@ class Game:
         self.assign_items_to_locations()
         self.assign_npcs_to_locations()
 
-    # use this to create the player.
-    def create_player(self):
-        print("Enter your player name: ")
-        player_name = input()
-        player = Player(player_name)
-        return player
+    # matches current player position with location, otherwise
+    # return default (this should never happen since every position has a location assigned)
+    def enter_location(self, position: list):
+        for index in range(len(self.locations)):
+            if self.locations[index].match_location():
+                self.locations[index].read_location_description()
+                return self.locations[index]
+        return self.locations[0]
+
 
     # now that we've loaded everything let's start playing the game
     # first introduce the player to the world of the game.
-    def start_game(self):
-        print("A Hacker's adventure in Web World!")
-        for i in range(10):
-            print("")
-        print("Welcome to Web World!")
-        for i in range(10):
-            print("")
-        self.create_player()
-
     def game_over(self):
         pass
 
 
 if __name__ == "__main__":
+
+    print("A Hacker's adventure in Web World!")
+    for i in range(10):
+        print("")
+    print("Welcome to Web World!")
+    for i in range(10):
+        print("")
+
+    print("Enter player name")
+    player_name = input()
+    new_player = Player(player_name)
     new_world = World()
-    new_game = Game(new_world)
-    new_game.build_world()
+    new_game = Game(new_world, new_player)
+
+
 
 
 
