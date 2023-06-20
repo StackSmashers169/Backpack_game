@@ -134,7 +134,7 @@
       ]
     },
   "My Remote Server": {
-    "name": "My Remote Server",
+    "name": "A Remote Server",
     "description": "Made it to the remote server! I should be safe for now!",
     "visited_status": false,
     "has_trap": false,

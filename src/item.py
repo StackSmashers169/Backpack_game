@@ -11,6 +11,9 @@ class Item:
         self.can_disable = can_disable
         self.can_scan = can_scan
 
+    def get_item_name(self):
+        return self.name
+
     # displays effect on console/terminal
     def read_effect(self):
         print(self.item_effect)
@@ -22,6 +25,7 @@ class Item:
     def gain_data(self, data: int):
         data = data + 10
         return data
+
     # fetches name
     def get_name(self):
         return self.name

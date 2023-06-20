@@ -186,10 +186,36 @@ class Game:
                             location.add_npc(self.npc_list[index])
                             break
 
+    def assign_item_to_npc(self):
+        for npc in self.npc_list:
+            npc_with_item = npc.name
+
+            match npc_with_item:
+                case "Random Script Kiddie":
+                    for index in range(len(self.items)):
+                        if self.items[index].get_name() == "Packet Scanner":
+                            npc.add_item(self.items[index])
+
+                case "Frustrated Hacker":
+                    for index in range(len(self.items)):
+                        if self.items[index].get_name() == "Anti Virus Module":
+                            npc.add_item(self.items[index])
+
+                case "API Salesperson":
+                    for index in range(len(self.items)):
+                        if self.items[index].get_name() == "Wireshark":
+                            npc.add_item(self.items[index])
+
+                case "Bitcoin Miner Adam":
+                    for index in range(len(self.items)):
+                        if self.items[index].get_name() == "Byte Package":
+                            npc.add_item(self.items[index])
+
     def build_world(self):
         self.assign_locations(self.world.get_positions_as_list())
         self.assign_items_to_locations()
         self.assign_npcs_to_locations()
+        self.assign_item_to_npc()
 
     # matches current player position with location, otherwise
     # return default (this should never happen since every position has a location assigned)

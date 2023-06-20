@@ -39,7 +39,7 @@ class BackPack:
             self._backpack.append(item)
             self.sort()
 
-    def in_backpack(self, item_name):
+    def in_backpack(self, item_name: str):
         """
         Complete this method using a binary search
         returns -1 or False if not found

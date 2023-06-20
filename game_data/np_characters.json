@@ -51,7 +51,7 @@
   "frustrated_hacker": {
     "name": "Frustrated Hacker",
     "dialogue": "you seem aggrieved... ah don't let them get to you, here take this anti-virus module, you'll need it on your journey",
-    "gives_item": false,
+    "gives_item": true,
     "damages_you": false,
     "items": [
 
@@ -61,7 +61,7 @@
   "API Salesperson":{
     "name": "API Salesperson",
     "dialogue": "Ah just the person I was looking for! Here take this thing, nobody seems to want it, so I'll give it to you for free",
-    "gives_item": false,
+    "gives_item": true,
     "damages_you": false,
     "items": [
 
@@ -71,7 +71,7 @@
   "Bitcoin Miner Adam": {
     "name": "Bitcoin Miner Adam",
     "dialogue": "All this mining is hard work eh? I found this packet of data but I have no use for it",
-    "gives_item": false,
+    "gives_item": true,
     "damages_you": false,
     "items": [
 

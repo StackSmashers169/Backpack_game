@@ -32,3 +32,6 @@ class Player:
     def entered_trap_room(self, location: Location):
         pass
 
+    # each time a player moves this needs to be updated
+    def get_data(self):
+        return self.data

@@ -20,26 +20,25 @@ class World:
         self.name = "Web World"
 
     # writes the map to the text file and then prints same map to terminal
-    def write_map_to_text_file(self):
-        with open("../game_data/world.txt", 'w') as file:
+    def write_map_to_text_file(self, path: str):
+        with open(path, 'w') as file:
             for i in range(self.height):
                 for j in range(self.width):
                     file.write(self.map[i][j])
                 file.write("\n")
-        self.read_map_to_terminal()
 
     # writes the map into the terminal so player can keep track of it.
-    def read_map_to_terminal(self):
-        with open("../game_data/world.txt", 'r') as file:
+    def read_map_to_terminal(self, path: str):
+        with open(path, 'r') as file:
             game_map = file.read()
             print(game_map)
 
     # places player in a random position on the using random access
-    def place_player(self, pos_y, pos_x):
+    def place_player(self, path: str,  pos_y: int, pos_x: int):
         print("You wake up to find yourself in an empty room, hurry up a find the remote server!")
         y_coordinate = pos_y
         x_coordinate = pos_x
-        with open("../game_data/world.txt", 'r+', encoding="utf-8") as file:
+        with open(path, 'r+', encoding="utf-8") as file:
             width = len(file.readline()) + 1  # for some reason width won't catch the \r character
             # for posix systems width needs to be +1 the grid width instead of +2 for windows.
             if os.name == 'posix':
@@ -50,12 +49,12 @@ class World:
             file.write('@')
         self.position[0] = y_coordinate
         self.position[1] = x_coordinate
-        self.read_map_to_terminal()
+        self.read_map_to_terminal(path)
 
-    def update_player_location(self, player_position: list):
+    def update_player_location(self, path: str, player_position: list):
         y_coordinate = player_position[0]
         x_coordinate = player_position[1]
-        with open("../game_data/world.txt", 'r+', encoding="utf-8") as file:
+        with open(path, 'r+', encoding="utf-8") as file:
             width = len(file.readline()) + 1  # for some reason width won't catch the \r character
             # for posix systems width needs to be +1 the grid width instead of +2 for windows.
             if os.name == 'posix':
@@ -66,8 +65,10 @@ class World:
             file.write('@')
         self.position[0] = y_coordinate
         self.position[1] = x_coordinate
+        self.read_map_to_terminal(path)
 
-    def move_to_new_location(self, player_position: list):
+    """to update the path, we will need the path to file"""
+    def move_to_new_location(self, path: str, player_position: list):
         # change the player's current location index.
         y_coordinate = player_position[0]
         x_coordinate = player_position[1]
@@ -116,7 +117,7 @@ class World:
 
         player_position[0] = y_coordinate
         player_position[1] = x_coordinate
-        self.update_player_location(player_position)
+        self.update_player_location(path, player_position)
 
     def get_positions_as_list(self):
         position_list = []
@@ -130,4 +131,4 @@ class World:
 if __name__ == "__main__":
     new_map = World()
     # test any "world" methods below
-    new_map.write_map_to_text_file()
+
