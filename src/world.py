@@ -1,5 +1,6 @@
 # Code by Victor J Wilson
 import os
+from player import Player
 
 
 # the first thing to be built, you can't have a game without a world to put it in
@@ -34,8 +35,8 @@ class World:
             print(game_map)
 
     # places player in a random position on the using random access
-    def place_player(self, path: str,  pos_y: int, pos_x: int):
-        print("You wake up to find yourself in an empty room, hurry up a find the remote server!")
+    def place_player(self, path: str, pos_y: int, pos_x: int):
+        print("You wake up to find yourself in an empty room, hurry up and find the remote server!")
         y_coordinate = pos_y
         x_coordinate = pos_x
         with open(path, 'r+', encoding="utf-8") as file:
@@ -65,9 +66,11 @@ class World:
             file.write('@')
         self.position[0] = y_coordinate
         self.position[1] = x_coordinate
+        player.current_position = self.position
         self.read_map_to_terminal(path)
 
     """to update the path, we will need the path to file"""
+
     def move_to_new_location(self, path: str, player_position: list):
         # change the player's current location index.
         y_coordinate = player_position[0]
@@ -127,8 +130,10 @@ class World:
 
         return position_list
 
+    def save_player_position(self, player: Player):
+        player.position = self.position
+
 
 if __name__ == "__main__":
     new_map = World()
     # test any "world" methods below
-

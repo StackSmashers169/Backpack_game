@@ -47,6 +47,9 @@ class Location:
     def get_location_name(self):
         return self.name
 
+    def get_positions(self):
+        return self._world_positions
+
     # matches position on board with location assigned to it.
     def match_position(self, map_position: list):
         for position in self._world_positions:

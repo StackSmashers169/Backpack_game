@@ -7,6 +7,7 @@ from item import Item
 import json
 import random
 
+WORLD_FILEPATH = "../game_data/world.txt"
 
 # this class handles all game operations and logic, includes a main function for playing the game.
 class Game:
@@ -25,7 +26,6 @@ class Game:
 
     # loads location data
     def load_locations(self, locations_info="../game_data/locations.json"):
-        print("loading locations")
         try:
             with open(locations_info, 'r', encoding='utf-8') as file_handle:
                 locations_data = json.load(file_handle)
@@ -49,7 +49,6 @@ class Game:
             print(json_err)
 
     def load_items(self, item_info="../game_data/items.json"):
-        print("loading items")
         try:
             with open(item_info, 'r', encoding='utf-8') as file_handle:
                 items_data = json.load(file_handle)
@@ -70,7 +69,6 @@ class Game:
 
     # function that loads npc information into npc class
     def load_npc(self, npc_info="../game_data/np_characters.json"):
-        print("loading non playable characters")
         try:
             with open(npc_info, 'r', encoding='utf-8') as file_handle:
                 npc_data = json.load(file_handle)
@@ -211,17 +209,25 @@ class Game:
                         if self.items[index].get_name() == "Byte Package":
                             npc.add_item(self.items[index])
 
+    # Builds the game world, assigning locations to positions, items and characters to locations and items to
+    # characters, also resets map from previous game iteration.
     def build_world(self):
         self.assign_locations(self.world.get_positions_as_list())
         self.assign_items_to_locations()
         self.assign_npcs_to_locations()
         self.assign_item_to_npc()
 
+        """place the player in the first position in Empty Room A, in the future I plan to make a separate room
+        called "start_room" """
+        self.world.write_map_to_text_file(WORLD_FILEPATH)
+        player_position = self.locations[0].get_positions()
+        self.world.place_player(WORLD_FILEPATH, player_position[0][0], player_position[0][1])
+
     # matches current player position with location, otherwise
     # return default (this should never happen since every position has a location assigned)
     def enter_location(self, position: list):
         for index in range(len(self.locations)):
-            if self.locations[index].match_location():
+            if self.locations[index].match_position(position):
                 self.locations[index].read_location_description()
                 return self.locations[index]
         return self.locations[0]
@@ -231,10 +237,22 @@ class Game:
     def game_over(self):
         pass
 
+    # when the game ends need to empty all lists in game so we can reload the game
+    # without appending to the list from the previous game iteration.
+    def delete_lists(self):
+        self.locations.clear()
+        self.npc_list.clear()
+        self.items.clear()
+
 
 # main function for testing purposes
 if __name__ == "__main__":
-    pass
+    test_world = World()
+    test_player = Player("test")
+    test_game = Game(test_world, test_player)
+    """Test your methods below"""
+    test_game.build_world()
+
 
 
 

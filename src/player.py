@@ -1,10 +1,12 @@
 # code by Victor J Wilson(20094873)
 
-
 from backpack import BackPack
 from item import Item
 from location import Location
 from npc import NPC
+
+WORLD_FILEPATH = "../game_data/world.txt"
+
 
 class Player:
 
@@ -15,6 +17,10 @@ class Player:
         self.items = []
         self.backpack = BackPack(self.items)
         self.position = []
+
+    # gets the player's current position, required when moving the player
+    def get_current_position(self):
+        return self.position
 
     # searches location for an item
     def search_location(self, location: Location):
