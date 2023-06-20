@@ -79,7 +79,8 @@ class Game:
                     dialogue = np_character["dialogue"]
                     gives_item = np_character["gives_item"]
                     damages_you = np_character["damages_you"]
-                    npc = NPC(name, dialogue, gives_item, damages_you)
+                    items = np_character["items"]
+                    npc = NPC(name, dialogue, gives_item, damages_you, items)
                     self.npc_list.append(npc)
         except FileNotFoundError:
             print(f'File {npc_info} not found')

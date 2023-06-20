@@ -3,54 +3,78 @@
     "name": "Database Maintenance Crew",
     "dialogue": "What how did you get in here? Oh your that white hat hacker we hired? Make sure you do these security patches pronto!",
     "gives_item": false,
-    "damages_you": false
+    "damages_you": false,
+    "items": [
+
+    ]
   },
 
   "the_middle_man": {
     "name": " Middle Man",
     "dialogue": "Don't mind me you go on right ahead",
     "gives_item": false,
-    "damages_you": false
+    "damages_you": false,
+    "items": [
+
+    ]
   },
   "random_script_kiddie": {
     "name": "Random Script Kiddie",
     "dialogue": "teach me how to be better at hacking! I'll give this item to you as payment for your services!",
     "gives_item": true,
-    "damages_you": false
+    "damages_you": false,
+    "items": [
+
+    ]
   },
 
   "Server Security": {
     "name": "Server Security",
     "dialogue": "Sorry kid, but I gotta kick you from the system, admin's orders don't take it personally",
     "gives_item": false,
-    "damages_you": true
+    "damages_you": true,
+    "items": [
+
+    ]
   },
 
   "Angry_forum_crowd": {
     "name": "Angry Forum Crowd",
     "dialogue":"You tried talking to the crowd but instead received lots of abusive language",
     "gives_item": false,
-    "damages_you": false
+    "damages_you": false,
+    "items": [
+
+    ]
   },
 
   "frustrated_hacker": {
     "name": "Frustrated Hacker",
     "dialogue": "you seem aggrieved... ah don't let them get to you, here take this anti-virus module, you'll need it on your journey",
     "gives_item": false,
-    "damages_you": false
+    "damages_you": false,
+    "items": [
+
+    ]
   },
 
   "API Salesperson":{
     "name": "API Salesperson",
     "dialogue": "Ah just the person I was looking for! Here take this thing, nobody seems to want it, so I'll give it to you for free",
     "gives_item": false,
-    "damages_you": false
+    "damages_you": false,
+    "items": [
+
+    ]
   },
 
   "Bitcoin Miner Adam": {
     "name": "Bitcoin Miner Adam",
     "dialogue": "All this mining is hard work eh? I found this packet of data but I have no use for it",
     "gives_item": false,
-    "damages_you": false
+    "damages_you": false,
+    "items": [
+
+    ]
   }
 }

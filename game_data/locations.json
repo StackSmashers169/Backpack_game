@@ -57,8 +57,9 @@
     "visited_status": false,
     "has_trap": false,
     "max_positions": 1,
-    "np_characters": {
-    },
+    "np_characters": [
+
+    ],
     "items": [
     ],
     "positions": [
@@ -70,8 +71,9 @@
     "visited_status": false,
     "has_trap": false,
     "max_positions": 1,
-    "np_characters": {
-    },
+    "np_characters": [
+
+    ],
     "items": [
     ],
     "positions": [
@@ -83,8 +85,9 @@
     "visited_status": false,
     "has_trap": false,
     "max_positions": 1,
-    "np_characters": {
-    },
+    "np_characters": [
+
+    ],
     "items": [
     ],
     "positions": {
@@ -96,8 +99,9 @@
     "visited_status": false,
     "has_trap": true,
     "max_positions": 1,
-    "np_characters": {
-    },
+    "np_characters": [
+
+    ],
     "items": [
     ],
     "positions": [
