@@ -46,36 +46,56 @@ def play_game(new_player: Player):
         """interacting with the location and checking inventory"""
         new_game.location_interaction_message()
         command = input()
-        while command != 'f' and command != 'c' and command != 't' and command != 'i' and command != 'm':
-            print("invalid input received, please enter f, c, t or m: ")
+        while command != 'f' and command != 'c' and command != 't' and command != 'i' and command != 'm'\
+                and command != 'u' and command != 'r':
+            print("invalid input received, please enter l, c, t, i, r, h, f, or m")
             command = input()
 
         while command != 'm':
-            if command == "f":
+            if command == "l":
                 new_player.search_location(current_location)
                 new_game.location_interaction_message()
-                command=""
+
 
             if command == "c":
                 location_item = current_location.get_specific_item()
                 new_player.add_item_to_backpack(location_item)
                 new_game.location_interaction_message()
-                command=""
+
 
             if command == "t":
                 location_npcs = current_location.get_npc_list()
                 new_player.talk_to_npcs(location_npcs)
                 new_game.location_interaction_message()
-                command=""
 
             if command == "i":
                 new_player.show_inventory()
                 new_game.location_interaction_message()
-                command=""
-            command = input()
 
+            if command == "r":
+                print("To read an item, type the name of the item in your backpack")
+                item_name = input()
+                new_player.read_item_effect(item_name)
+                new_game.location_interaction_message()
+
+            if command == "h":
+                print("To use an item, type the name of the item in your backpack")
+                item_name = input()
+                new_player.use_data_gain_item(item_name)
+                new_game.location_interaction_message()
+
+            if command == "f":
+                print("To use an item, type the name of the item in your backpack")
+                item_name = input()
+                scanned_position = new_player.scan_locations(item_name)
+                new_game.print_scanned_locations(scanned_position)
+                new_game.location_interaction_message()
+
+            command = input()
         """showing the location we need to reach if we pick up IP Address"""
         new_game.goal_marker_activate(WORLD_FILEPATH, new_player)
+
+
 
     """be sure to empty all lists and re-write the map file"""
     new_game.delete_lists()
@@ -107,7 +127,7 @@ if __name__ == '__main__':
         print("Find the Remote Server before the WEBWorld")
         play_game(new_player)
 #================================================================================================
-
+        command=""
         print("would you like to play again? type 'y' to play again or 'q' to exit")
         command = input()
         while command != "y" and command != "q":

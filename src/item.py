@@ -11,7 +11,6 @@ class Item:
         self.can_disable = can_disable
         self.can_scan = can_scan
 
-
     def get_item_name(self):
         return self.name
 
@@ -30,13 +29,10 @@ class Item:
     def get_name(self):
         return self.name
 
-    def can_be_used(self):
-        if self.can_scan or self.data_gain > 0:
+    def can_give_you_data(self):
+        if self.data_gain > 0:
             return True
-
         return False
 
     def is_a_scan_item(self):
         return self.can_scan
-
-

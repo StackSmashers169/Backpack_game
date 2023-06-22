@@ -33,7 +33,7 @@
 
   "wireshark": {
     "name": "Wireshark",
-    "item_effect": "wireshark packet scanner provides information on any location in the world",
+    "item_effect": "wireshark packet scanner shows the name of a location on the map and also marks that location",
     "data_gain": 0,
     "can_disable": false,
     "can_scan": true

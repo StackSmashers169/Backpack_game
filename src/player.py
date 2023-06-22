@@ -64,24 +64,21 @@ class Player:
         if item_index == -1:
             print("You can't read what you don't have")
         current_item = self._backpack[item_index]
-        print(current_item.get_item_effect)
+        print(current_item.get_item_effect())
 
     def has_ip_address(self):
         return self._backpack.in_backpack("IP Address")
 
-    def use_item(self, item_name: str):
+    # heals the player when using this item.
+    def use_data_gain_item(self, item_name: str):
         item_index = self._backpack.in_backpack(item_name)
         if item_index == -1:
             print("Using an item you don't have ?! Haven't you hacked enough things already?!")
             return
 
         current_item = self._backpack[item_index]
-        if not current_item.can_be_used():
-            print("You can't use this item")
-
-        if current_item.is_a_scan_item():
-            self.scan_locations(item_name)
-            del self._backpack[item_index]
+        if not current_item.can_give_you_data():
+            print("This item won't give you data hahaha!")
 
         # if the item is data_gain item you gain data
         self.data = current_item.get_data_gain()
@@ -92,6 +89,16 @@ class Player:
         y_coordinate = self.position[0]
         x_coordinate = self.position[1]
         position_to_be_scanned = []
+        """check if item is a scan type item"""
+        item_index = self._backpack.in_backpack(item_name)
+
+        if item_index == -1:
+            print("Using an item you don't have ?! Haven't you hacked enough things already?!")
+            return
+
+        if not self._backpack[item_index].is_a_scan_item:
+            print("Good luck trying to do that with this piece of equipment hahaha!")
+            return
         # ==============================Packet Scanner===================================
         if item_name == "Packet Scanner":
             command = input()

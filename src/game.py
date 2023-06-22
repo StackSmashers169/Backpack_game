@@ -221,17 +221,32 @@ class Game:
             file.seek(winning_position)
             file.write('X')
 
-    # prints the name of the location at the position given in parameters, similar to enter location,
-    # but instead we just print the name of the location to the terminal.
-    def print_scanned_locations(self, position: list):
+        self.world.read_map_to_terminal(path)
+
+    # prints the name of the location at the position given in parameters and marks it with 'M' on the map
+    def print_scanned_locations(self, position: list, path: str):
         for index in range(len(self.locations)):
             if self.locations[index].match_position(position):
-                print("Scanned Location: {}".format(self.locations[index].get_location_name()))
+                print("Scanned Location: {} "
+                      " location is marked with M".format(self.locations[index].get_location_name()))
+
+        with open(path, 'r+', encoding="utf-8") as file:
+            width = len(file.readline()) + 1  # for some reason width won't catch the \r character
+            # for posix systems width needs to be +1 the grid width instead of +2 for windows.
+            if os.name == 'posix':
+                width = len(file.readline())
+
+            winning_position = position[0][0] * width + position[0][1]
+            file.seek(winning_position)
+            file.write('M')
+
+        self.world.read_map_to_terminal(path)
 
     # =================================Running and Playing the Game====================================
     def location_interaction_message(self):
-        print("What would you like to do? Type 'f' to search location, 'c' to add item, 't' to talk to npc"
-              " 'i' to check backpack contents, or 'm' to move to a new location")
+        print("What would you like to do? Type 'l' to search location, 'c' to add item, 't' to talk to npc"
+              " 'i' to check backpack contents, \n r to read item effect, h to use a heal item, f to use a scan item"
+              " 'm' to move to a new location")
 
         # Builds the game world, assigning locations to positions, items and characters to locations and items to
         # characters, also resets map from previous game iteration.
@@ -254,7 +269,7 @@ class Game:
         player_position = self.locations[0].get_positions()
         self.world.place_player(world_path, player_position[0][0], player_position[0][1])
 
-    # when the game ends need to empty all lists in game so we can reload the game
+    # when the game ends need to empty all lists in game, so we can reload the game
     # without appending to the list from the previous game iteration.
     def delete_lists(self):
         self.locations.clear()
