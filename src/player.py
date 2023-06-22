@@ -57,8 +57,7 @@ class Player:
     def talk_to_npcs(self, npcs: list):
         for npc in npcs:
             npc.read_dialogue()
-            npc_item = npc.gives_item()
-            self._backpack.add(npc_item)
+            self._backpack.add(npc.give_item())
 
     def read_item_effect(self, item_name: str):
         item_index = self._backpack.in_backpack(item_name)
