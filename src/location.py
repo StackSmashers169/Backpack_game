@@ -1,6 +1,6 @@
 # Code written by Victor J Wilson
-from item import Item
-from npc import NPC
+from src.item import Item
+from src.npc import NPC
 
 
 class Location:
@@ -34,36 +34,64 @@ class Location:
     def read_location_description(self):
         print(self.description)
 
-    def add_map_position(self, position: list):
+    # this method is called when building the world
+    def assign_map_position(self, position: list):
         self._world_positions.append(position)
 
-    def add_item(self, item: Item):
+    # called when building world
+    def assign_item(self, item: Item):
         self._items_list.append(item)
 
-    def add_npc(self, npc: NPC):
+    # this method is called when building the world
+    def assign_npc(self, npc: NPC):
         self._npc_list.append(npc)
 
-    # get location name
+    # gets location name in order to fulfill game objective requirements
     def get_location_name(self):
         return self.name
 
+    # method for testing purposes, might delete later if it doesn't come up during game loop
     def get_positions(self):
         return self._world_positions
 
-    # matches position on board with location assigned to it.
+    def set_location_to_visited(self):
+        if not self.visited:
+            self.visited = True
+    # called when entering a new location, change that location from visited = false to visited = true
+
+    def is_visited(self):
+        return self.visited
+
+    # checks if the room is a trap room
+    def is_trap_room(self):
+        return self.has_trap
+
+    # gets a list of items for the player to view when they search the location
+    def get_items_list(self):
+        return self._items_list
+
+    # called when player gets item from location
+    def get_specific_item(self):
+        if not self._items_list:
+            print("no items in this location")
+            return
+        return self._items_list.pop(0)
+
+    # gets a list of npcs to talk to.
+    def get_npc_list(self):
+        return self._npc_list
+
+    # matches position on board with location assigned to it, essential for knowing which location the player is at
+    # or when player is scanning an adjacent or adjacent tiles.
     def match_position(self, map_position: list):
         for position in self._world_positions:
             if map_position == position:
                 return True
         return False
 
-    def trap_room(self, data: int):
-        data = data - 10
-        return data
 
-    """Entering the Honeypot server forces you to interact with server security which drops your data to 0"""
-    def server_security(self, data: int):
-        data = 0
-        return data
+
+
+
 
 

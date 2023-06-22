@@ -11,24 +11,32 @@ class Item:
         self.can_disable = can_disable
         self.can_scan = can_scan
 
+
     def get_item_name(self):
         return self.name
 
-    # displays effect on console/terminal
-    def read_effect(self):
-        print(self.item_effect)
+    def get_item_effect(self):
+        return self.item_effect
 
     def disable_trap(self):
         message = "Using the {} you successfully disabled the trap".format(self.name)
         print(message)
 
-    def gain_data(self, data: int):
-        data = data + 10
-        return data
+    # gets data_gain attribute for when player uses a healing item.
+    def get_data_gain(self):
+        return self.data_gain
 
     # fetches name
     def get_name(self):
         return self.name
 
+    def can_be_used(self):
+        if self.can_scan or self.data_gain > 0:
+            return True
+
+        return False
+
+    def is_a_scan_item(self):
+        return self.can_scan
 
 

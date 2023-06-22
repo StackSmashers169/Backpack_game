@@ -1,3 +1,4 @@
+from src.item import Item
 
 
 class BackPack:
@@ -14,6 +15,7 @@ class BackPack:
 
     """
 
+    #
     def __init__(self, items: list):
         self._backpack = []
         if items is None:
@@ -23,21 +25,33 @@ class BackPack:
         self.sort()
 
     def sort(self):
-        self._backpack.sort()
+        self._backpack.sort(key=lambda item: item.name)
 
-    def count(self):
-        return self._backpack.count
-
+    # the length of the backpack denotes the count
     def __len__(self):
         return len(self._backpack)
 
-    def __getitem__(self, index):
-        return self._backpack[index]
+    def __getitem__(self, index: int):
+        if index >= 0:
+            return self._backpack[index]
 
-    def add(self, item):
+    def __delitem__(self, index: int):
+        del self._backpack[index]
+
+    def add(self, item: Item):
         if item is not None:
+            print("You added {} to your backpack".format(item.name))
             self._backpack.append(item)
             self.sort()
+
+    def print_backpack_items(self):
+        if not self._backpack:
+            print("backpack is empty")
+            return
+
+        print("Current Inventory List:")
+        for item in self._backpack:
+            print(item.name)
 
     def in_backpack(self, item_name: str):
         """
@@ -51,7 +65,7 @@ class BackPack:
         high = len(self._backpack) - 1
 
         while low <= high:
-            mid = (low + high)//2
+            mid = (low + high) // 2
             mid_item = self._backpack[mid].name
 
             if mid_item == item_name:
@@ -62,4 +76,3 @@ class BackPack:
                 high = mid - 1
 
         return -1
-

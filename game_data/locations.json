@@ -95,7 +95,7 @@
   },
   "The_Honeypot": {
     "name": "Honeypot Server",
-    "description": "I knew the information was too good to be true!",
+    "description": "He got me :(",
     "visited_status": false,
     "has_trap": true,
     "max_positions": 1,

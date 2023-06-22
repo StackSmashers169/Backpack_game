@@ -17,9 +17,20 @@ Security and the many traps that the admin of WEBworld has laid out for you.
 > and meet NPCs that will assist on your escape from the WEBworld's Admin and his
 > henchmen. 
  
+
+# Unique Locations
+This game has 7 unique locations which include:
+- Database Room
+- Connection Hub
+- Internet Forum
+- 
+
 # Gameplay Controls
 
 #### Starting the game
+- Enter Terminal/Command Prompt
+- Navigate into this folder: "C:\Users\VicJo\Documents\ICTPRG\Applied Python Programming\Project\Backpack_game"
+- Type Python3 main.py into the terminal and press enter
 - To start the game type **y** into the terminal, to exit type **q** into the terminal
 
 #### Moving
@@ -30,10 +41,13 @@ Security and the many traps that the admin of WEBworld has laid out for you.
 - Type **U** to use item
 - Type **T** to talk to an NPC
 
+#### Understanding the World Grid
+- The world's grid positions are marked with '_' for unvisited '|' for visited and '@' for where 
+the player is currently at. 
 
 #### Exiting the Game
 - To Exit the game, press **Q**
-
+- 
 
 #### Software Requirements:
 [Python](https://www.python.org/downloads/) version 3.10 or higher

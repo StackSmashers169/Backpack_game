@@ -25,7 +25,7 @@
 
   "packet_scanner": {
     "name": "Packet Scanner",
-    "item_effect": "gives information on a reachable tile",
+    "item_effect": "gives information on a reachable location",
     "data_gain": 0,
     "can_disable": false,
     "can_scan": true
@@ -33,7 +33,7 @@
 
   "wireshark": {
     "name": "Wireshark",
-    "item_effect": "wireshark packet scanner provides information on all four reachable tiles",
+    "item_effect": "wireshark packet scanner provides information on any location in the world",
     "data_gain": 0,
     "can_disable": false,
     "can_scan": true
@@ -44,6 +44,6 @@
     "item_effect": "shows the location of your remote server",
     "data_gain":  0,
     "can_disable": false,
-    "can_scan": true
+    "can_scan": false
   }
 }

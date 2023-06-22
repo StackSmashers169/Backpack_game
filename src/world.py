@@ -1,6 +1,6 @@
 # Code by Victor J Wilson
 import os
-from player import Player
+from src.player import Player
 
 
 # the first thing to be built, you can't have a game without a world to put it in
@@ -36,7 +36,8 @@ class World:
 
     # places player in a random position on the using random access
     def place_player(self, path: str, pos_y: int, pos_x: int):
-        print("You wake up to find yourself in an empty room, hurry up and find the remote server!")
+        print("You managed to escape to this empty room!, hurry up and get the data to the remote server! before the"
+              "admin catches you!")
         y_coordinate = pos_y
         x_coordinate = pos_x
         with open(path, 'r+', encoding="utf-8") as file:
@@ -66,15 +67,23 @@ class World:
             file.write('@')
         self.position[0] = y_coordinate
         self.position[1] = x_coordinate
-        player.current_position = self.position
         self.read_map_to_terminal(path)
 
-    """to update the path, we will need the path to file"""
-
+    # function for moving player around the world
     def move_to_new_location(self, path: str, player_position: list):
         # change the player's current location index.
         y_coordinate = player_position[0]
         x_coordinate = player_position[1]
+
+        with open(path, 'r+', encoding="utf-8") as file:
+            width = len(file.readline()) + 1  # for some reason width won't catch the \r character
+            # for posix systems width needs to be +1 the grid width instead of +2 for windows.
+            if os.name == 'posix':
+                width = len(file.readline())
+
+            position = y_coordinate * width + x_coordinate
+            file.seek(position)
+            file.write('|')
 
         if player_position == [-1, -1]:
             print("there is not a player on the map")
@@ -132,6 +141,10 @@ class World:
 
     def save_player_position(self, player: Player):
         player.position = self.position
+
+    # if the player obtained the item "IP Address" the game marks the location with "X"
+
+
 
 
 if __name__ == "__main__":

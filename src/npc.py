@@ -1,5 +1,6 @@
 # code written by Victor J Wilson (20094873)
-from item import Item
+from src.item import Item
+
 
 class NPC:
 
@@ -13,20 +14,16 @@ class NPC:
     def get_name(self):
         return self.name
 
-    def add_item(self, item: Item):
+    # assigns npcs an item if their gives_item is true.
+    def assign_item(self, item: Item):
         self.items.append(item)
 
     # npcs only have one item at most so just return items[0]
     def give_item(self):
         if self.gives_item:
+            print("got {} from {}".format(self.items[0].name, self.name))
             return self.items[0]
+        return
 
-    def read_dialogue(self, option: int):
-        pass
-
-
-
-
-
-
-
+    def read_dialogue(self):
+        print(self.dialogue)
