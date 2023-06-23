@@ -70,7 +70,7 @@ class World:
         self.read_map_to_terminal(path)
 
     # function for moving player around the world
-    def move_to_new_location(self, path: str, player_position: list):
+    def move_to_new_location(self, path: str, player_position: list, direction_input: str):
         # change the player's current location index.
         y_coordinate = player_position[0]
         x_coordinate = player_position[1]
@@ -88,11 +88,7 @@ class World:
         if player_position == [-1, -1]:
             print("there is not a player on the map")
         else:
-            print("press w(north) a(west) s(south) d(east) to move")
-            direction = input()
-            while direction != 'w' and direction != 'a' and direction != 's' and direction != 'd':
-                print("invalid input received, please enter w, a, s or d: ")
-                direction = input()
+            direction = direction_input
 
             match direction:
                 case "w":
@@ -140,11 +136,9 @@ class World:
         return position_list
 
     def save_player_position(self, player: Player):
-        player.position = self.position
+        player.save_current_player_position(self.position)
 
     # if the player obtained the item "IP Address" the game marks the location with "X"
-
-
 
 
 if __name__ == "__main__":

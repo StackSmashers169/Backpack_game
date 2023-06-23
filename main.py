@@ -26,9 +26,16 @@ def play_game(new_player: Player):
     location_name = ""
 
     while location_name != "A Remote Server":
-        """moving to new location"""
+        """print player's current data connection level"""
         print("{} has {} data".format(new_player.name, player_data))
-        world.move_to_new_location(WORLD_FILEPATH, new_player.position)
+
+        """moving to new location"""
+        print("press w(north) a(west) s(south) d(east) to move")
+        direction_input = input()
+        while direction_input != 'w' and direction_input != 'a' and direction_input != 's' and direction_input != 'd':
+            print("invalid input received, please enter w, a, s or d: ")
+            direction_input = input()
+        world.move_to_new_location(WORLD_FILEPATH, new_player.position, direction_input)
         world.save_player_position(new_player)
 
         """ location data"""

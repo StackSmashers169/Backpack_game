@@ -22,6 +22,9 @@ class Player:
     def get_current_position(self):
         return self.position
 
+    def save_current_player_position(self, position: list):
+        self.position = position
+
     # get the player's data
     def get_data_remaining(self):
         return self.data
