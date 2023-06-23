@@ -24,6 +24,7 @@ class BackPack:
             self._backpack.append(item)
         self.sort()
 
+    # uses the key parameter of python sort to sort objects by item name.
     def sort(self):
         self._backpack.sort(key=lambda item: item.name)
 
@@ -44,6 +45,7 @@ class BackPack:
             self._backpack.append(item)
             self.sort()
 
+    # prints the contents of the backpack to the terminal as an inventory list.
     def print_backpack_items(self):
         if not self._backpack:
             print("backpack is empty")
@@ -53,6 +55,7 @@ class BackPack:
         for item in self._backpack:
             print(item.name)
 
+    # uses binary search to find an item in the backpack using the item_name as a reference.
     def in_backpack(self, item_name: str):
         """
         Complete this method using a binary search

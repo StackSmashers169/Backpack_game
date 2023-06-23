@@ -8,7 +8,7 @@ class NPC:
         self.name = name
         self.dialogue = dialogue
         self.gives_item = gives_item
-        self.damages_you = damages_you
+        self.damages_you = damages_you  # feature I might add in later, would replace a unique room having trap status
         self.items = items
 
     def get_name(self):

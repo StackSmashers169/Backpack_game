@@ -37,17 +37,22 @@ This game has 7 unique locations which include:
 - Type **W** to go North, **A** to go west, **S** to go South and **D** to go East on the map
 
 #### Interacting with the world
-- Type **G** to pick up item
-- Type **U** to use item
-- Type **T** to talk to an NPC
+- Type **c** to pick up item
+- Type **u** to use item
+- Type **t** to talk to an NPC
+- Type **i** to check what's in your backpack and show how many items are in your backpack
+- Type **r** to check the effect of an item you are carrying
+- Type **h** to use a healing item
+- Type **f** to scan a location in the world. 
+- Type **m** to return to the "Move Player" screen. 
 
 #### Understanding the World Grid
 - The world's grid positions are marked with '_' for unvisited '|' for visited and '@' for where 
 the player is currently at. 
 
 #### Exiting the Game
-- To Exit the game, press **Q**
-- 
+- To Exit the game, press **q** in the start screen
+
 
 #### Software Requirements:
 [Python](https://www.python.org/downloads/) version 3.10 or higher

@@ -13,9 +13,9 @@ class World:
     # size of world should be 5 by 5 for a good challenging experience
     """
 
-    def __init__(self):
-        self.width = 5
-        self.height = 5
+    def __init__(self, width=5, height=5):
+        self.width = width
+        self.height = height
         self.map = [['_' for j in range(self.width)] for i in range(self.height)]
         self.position = [-1, -1]  # default position when player is not on the map
         self.name = "Web World"

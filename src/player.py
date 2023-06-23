@@ -13,15 +13,24 @@ class Player:
     def __init__(self, name: str):
         self.name = name
         self.is_alive = True
-        self.data = 50  # data represents HP for this character or more precisely 50b.
+        self.data = 50  # data represents HP for this character.
         self.items = []
         self._backpack = BackPack(self.items)
         self.position = []
+
+    # fetches the name given to the player
+    def get_player_name(self):
+        return self.name
+
+    # fetches the number of items in backpack to display to the terminal, used when displaying backpack contents.
+    def get_backpack_count(self):
+        return len(self._backpack)
 
     # gets the player's current position, required when moving the player
     def get_current_position(self):
         return self.position
 
+    # saves the player's current position to be used as reference for when player moves again.
     def save_current_player_position(self, position: list):
         self.position = position
 
@@ -29,18 +38,20 @@ class Player:
     def get_data_remaining(self):
         return self.data
 
+    # this method is called when the player enters a trap room.
     def entered_trap_room(self, location: Location, data: int):
         if not location.is_trap_room():
             return data
 
         if self._backpack.in_backpack("Anti Virus Module") != -1:
+            print("You used the Anti Virus Module protect you from the trap")
             del self._backpack[self._backpack.in_backpack("Anti Virus Module")]
             return data
 
         data = data - 10
         return data
 
-    # searches location for an item
+    # searches location and displays any items in the location that are lying around.
     def search_location(self, location: Location):
         print("You searched the location for an item")
         location_item_list = location.get_items_list()
@@ -51,17 +62,22 @@ class Player:
         for item in location_item_list:
             print("Found {}".format(item.name))
 
+    # adds an item to the backpack.
     def add_item_to_backpack(self, item: Item):
         self._backpack.add(item)
 
+    # prints contents of backpack to terminal, performs the "inventory check" feature of the game.
     def show_inventory(self):
         self._backpack.print_backpack_items()
 
     def talk_to_npcs(self, npcs: list):
+        if not npcs:
+            print("Nobody to talk to... Man I feel lonely :(")
         for npc in npcs:
             npc.read_dialogue()
             self._backpack.add(npc.give_item())
 
+    # player reads item effect to the terminal
     def read_item_effect(self, item_name: str):
         item_index = self._backpack.in_backpack(item_name)
         if item_index == -1:
@@ -73,7 +89,7 @@ class Player:
         return self._backpack.in_backpack("IP Address")
 
     # heals the player when using this item.
-    def use_data_gain_item(self, item_name: str):
+    def use_data_gain_item(self, item_name: str, data: int):
         item_index = self._backpack.in_backpack(item_name)
         if item_index == -1:
             print("Using an item you don't have ?! Haven't you hacked enough things already?!")
@@ -84,8 +100,11 @@ class Player:
             print("This item won't give you data hahaha!")
 
         # if the item is data_gain item you gain data
-        self.data = current_item.get_data_gain()
+        print("you gained 20 bytes of data")
+        data = data + current_item.get_data_gain()
         del self._backpack[item_index]
+
+        return data
 
     # provides map positions to game for when scanning items in the game.
     def scan_locations(self, item_name: str):

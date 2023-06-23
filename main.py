@@ -27,7 +27,7 @@ def play_game(new_player: Player):
 
     while location_name != "A Remote Server":
         """print player's current data connection level"""
-        print("{} has {} data".format(new_player.name, player_data))
+        print("{} has {} data".format(new_player.get_player_name(), player_data))
 
         """moving to new location"""
         print("press w(north) a(west) s(south) d(east) to move")
@@ -35,11 +35,11 @@ def play_game(new_player: Player):
         while direction_input != 'w' and direction_input != 'a' and direction_input != 's' and direction_input != 'd':
             print("invalid input received, please enter w, a, s or d: ")
             direction_input = input()
-        world.move_to_new_location(WORLD_FILEPATH, new_player.position, direction_input)
+        world.move_to_new_location(WORLD_FILEPATH, new_player.get_current_position(), direction_input)
         world.save_player_position(new_player)
 
         """ location data"""
-        current_location = new_game.enter_location(new_player.position)
+        current_location = new_game.enter_location(new_player.get_current_position())
         location_name = current_location.get_location_name()
         if location_name == "A Remote Server":
             return new_player
@@ -53,8 +53,8 @@ def play_game(new_player: Player):
         """interacting with the location and checking inventory"""
         new_game.location_interaction_message()
         command = input()
-        while command != 'f' and command != 'c' and command != 't' and command != 'i' and command != 'm'\
-                and command != 'u' and command != 'r':
+        while command != 'l' and command != 'c' and command != 't' and command != 'i' and command != 'm'\
+                and command != 'h' and command != 'f' and command != 'r':
             print("invalid input received, please enter l, c, t, i, r, h, f, or m")
             command = input()
 
@@ -77,6 +77,7 @@ def play_game(new_player: Player):
 
             if command == "i":
                 new_player.show_inventory()
+                print("Items in backpack: {}".format(new_player.get_backpack_count()))
                 new_game.location_interaction_message()
 
             if command == "r":
@@ -88,14 +89,14 @@ def play_game(new_player: Player):
             if command == "h":
                 print("To use an item, type the name of the item in your backpack")
                 item_name = input()
-                new_player.use_data_gain_item(item_name)
+                player_data = new_player.use_data_gain_item(item_name, player_data)
                 new_game.location_interaction_message()
 
             if command == "f":
                 print("To use an item, type the name of the item in your backpack")
                 item_name = input()
                 scanned_position = new_player.scan_locations(item_name)
-                new_game.print_scanned_locations(scanned_position)
+                new_game.print_scanned_locations(scanned_position, WORLD_FILEPATH)
                 new_game.location_interaction_message()
 
             command = input()

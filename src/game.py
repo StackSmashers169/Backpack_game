@@ -257,6 +257,7 @@ class Game:
         self.load_items(items_path)
         self.load_npc(npc_path)
 
+    # calls all the methods that build the game world (assigning locations to positions, items and NPCs to locations)
     def build_world(self, world_path: str):
         self.assign_locations(self.world.get_positions_as_list())
         self.assign_items_to_locations()
