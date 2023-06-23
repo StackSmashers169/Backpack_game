@@ -25,13 +25,26 @@ class TestStack(unittest.TestCase):
     def test_player_movement(self):
         self.test_world.write_map_to_text_file(WORLD_FILEPATH)
         self.test_world.place_player(WORLD_FILEPATH, 2, 2)
-        self.assertEqual.
         self.test_world.save_player_position(self.test_player)
+        self.assertEqual(self.test_player.get_current_position(), [2, 2])
+        """move up"""
         self.test_world.move_to_new_location(WORLD_FILEPATH, self.test_player.get_current_position(), "w")
         self.test_world.save_player_position(self.test_player)
         self.assertEqual(self.test_player.get_current_position(), [1, 2])
+        """move right"""
+        self.test_world.move_to_new_location(WORLD_FILEPATH, self.test_player.get_current_position(), "d")
+        self.test_world.save_player_position(self.test_player)
+        self.assertEqual(self.test_player.get_current_position(), [1, 3])
+        """move down"""
+        self.test_world.move_to_new_location(WORLD_FILEPATH, self.test_player.get_current_position(), "s")
+        self.test_world.save_player_position(self.test_player)
+        self.assertEqual(self.test_player.get_current_position(), [2, 3])
+        """move left"""
+        self.test_world.move_to_new_location(WORLD_FILEPATH, self.test_player.get_current_position(), "a")
+        self.test_world.save_player_position(self.test_player)
+        self.assertEqual(self.test_player.get_current_position(), [2, 2])
 
-    # This is more of a acceptance test than a unit test.
+    # This is more of an acceptance test than a unit test,
     def test_pick_up_item(self):
         self.test_world.write_map_to_text_file(WORLD_FILEPATH)
         self.test_game.load_game_assets(LOCATIONS_FILEPATH, ITEMS_FILEPATH, NPC_FILEPATH)
@@ -45,7 +58,7 @@ class TestStack(unittest.TestCase):
         location_name = current_location.get_location_name()
 
         """add item via talking to npc or adding to back pack immediately"""
-        if location_name == "Database Room" or location_name == "Connection Hub" or location_name == "Internet Forum" \
+        if location_name == "Database Room" or location_name == "Internet Forum" \
                 or location_name == "API Store" or location_name == "BCOM Bitcoin Mine":
             """talk to npcs if the item is obtained from them"""
             location_npcs = current_location.get_npc_list()
@@ -55,6 +68,17 @@ class TestStack(unittest.TestCase):
             location_item = current_location.get_specific_item()
             self.test_player.add_item_to_backpack(location_item)
             self.assertEqual(self.test_player.get_backpack_count(), 1)
+
+        elif location_name == "Connection Hub":
+            """talk to npcs if the item is obtained from them"""
+            location_npcs = current_location.get_npc_list()
+            self.test_player.talk_to_npcs(location_npcs)
+
+            """get the location's specific item and add it if its a location with an assigned item"""
+            location_item = current_location.get_specific_item()
+            self.test_player.add_item_to_backpack(location_item)
+            self.assertEqual(self.test_player.get_backpack_count(), 2)
+
         else:
             location_npcs = current_location.get_npc_list()
             self.test_player.talk_to_npcs(location_npcs)
